@@ -3,13 +3,27 @@ require 'spec_helper'
 describe Conference do
 
   context "when new" do
-    subject { FactoryGirl.create(:conference) }
+    let(:owner) { FactoryGirl.create(:user) }
+    subject { FactoryGirl.create(:conference, user_id: owner.id) }
 
     it { should be_valid }
 
     it "should have no guests" do
       subject.guests.should be_empty
     end
+
+    it "should have only one stuff" do
+      subject.stuff.size.should be_eql(1)
+    end
+
+    it "should have the only user its creator" do
+      subject.stuff.last.should be_eql(owner)
+    end
+
+    it "creator should have owner role" do
+      subject.organizers.last.role.should be_eql("owner")
+    end
+
   end
 
   context "when empty fields" do

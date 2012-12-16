@@ -25,8 +25,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at
 
   ## associations
-  has_many :participations, :class_name => "Participant"
-  has_many :takes_part, :through => :participations, :source => :conference
+  has_many :participations, class_name: "Participant"
+  has_many :takes_part, through: :participations, source: :conference
+
+  has_many :organizer_roles, class_name: "Organizer"
+  has_many :organized, through: :organizer_roles, source: :conference
 
   ## plugins
 

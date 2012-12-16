@@ -28,5 +28,10 @@ describe User do
     it "should have no participations" do
       subject.participations.should be_empty
     end
+
+    it "should have no organized events" do
+      subject.organized.should be_empty
+    end
+
   end
 end

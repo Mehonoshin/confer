@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :organizer do
     user_id 1
     conference_id 1
-    role "MyString"
-    role_description "MyString"
+    role "owner"
+    role_description "Some descr"
   end
 end
