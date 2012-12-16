@@ -9,6 +9,7 @@ gem "cancan"
 gem 'state_machine'
 gem 'kaminari'
 gem 'formtastic'
+gem 'formtastic-bootstrap'
 gem "carrierwave"
 
 gem "airbrake"
@@ -25,6 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'pry-rails'

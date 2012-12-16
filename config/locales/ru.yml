@@ -1,1 +1,9 @@
 ru:
+  menu:
+    conferences: "Конференции"
+  conference:
+    name: "Название"
+    add: "Добавить"
+    validations:
+      start_date_should_be_less_than_end_date: "должна быть меньше даты конца"
+      end_date_should_be_greater_than_start_date: "должна быть больше даты конца"

@@ -1,0 +1,9 @@
+.add-conference-link
+  = link_to t('conference.add'), new_conference_path, class: "btn btn-primary"
+
+%table
+  %tr
+    %th= t('conference.name')
+  - @conferences.each do |conf|
+    %tr
+      %td= link_to conf.name, conference_path(conf)

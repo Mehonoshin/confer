@@ -24,10 +24,22 @@ describe Conference do
       subject.organizers.last.role.should be_eql("owner")
     end
 
+    it "should require unique domain" do
+      existing_domain = subject.domain
+      new_conf = FactoryGirl.build(:conference, domain: existing_domain)
+      new_conf.should_not be_valid
+    end
+
+    it "should require start date be less than end date" do
+      conf = FactoryGirl.build(:conference, start_date: Time.now, end_date: 1.day.ago)
+      conf.valid?
+      conf.errors[:start_date].should_not be_empty
+    end
   end
 
+
   context "when empty fields" do
-    subject { FactoryGirl.build(:conference, name: "", start_date: nil, end_date: nil) }
+    subject { FactoryGirl.build(:conference, name: "", domain: "", start_date: nil, end_date: nil) }
 
     before do
       subject.valid?
@@ -35,6 +47,10 @@ describe Conference do
 
     it "should require name" do
       subject.errors[:name].should_not be_empty
+    end
+
+    it "should require domain" do
+      subject.errors[:domain].should_not be_empty
     end
 
     it "should require start date" do
