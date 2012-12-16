@@ -4,13 +4,16 @@ class Conference < ActiveRecord::Base
 
   ## associations
   has_many :participants
-  has_many :guests, :through => :participants, :source => :user
+  has_many :guests, through: :participants, source: :user
 
   ## plugins
 
   ## callbacks
 
   ## validations
+  validates :name, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 
   ## named_scopes
 

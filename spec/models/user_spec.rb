@@ -20,5 +20,13 @@
 require 'spec_helper'
 
 describe User do
-  subject { Factory(:user) }
+  subject { FactoryGirl.create(:user) }
+
+  context "when new" do
+    it { should be_valid }
+
+    it "should have no participations" do
+      subject.participations.should be_empty
+    end
+  end
 end
