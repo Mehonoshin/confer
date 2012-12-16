@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: organizers
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  conference_id    :integer
+#  role             :string(255)
+#  role_description :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class Organizer < ActiveRecord::Base
   ## included modules & attr_*
   attr_accessible :conference_id, :role, :role_description, :user_id

@@ -31,9 +31,10 @@ gem 'jquery-ui-rails'
 group :development do
   gem 'pry-rails'
   gem 'ultimate-log-silencer'
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem "annotate"
   gem 'guard-annotate'
   gem 'guard-resque'
+  gem 'guard-rspec'
   gem 'hirb'
   gem 'showoff-io'
 end

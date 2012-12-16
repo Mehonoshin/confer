@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: conferences
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  start_date :datetime
+#  end_date   :datetime
+#  max_guests :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  domain     :string(255)
+#
+
 class Conference < ActiveRecord::Base
   ## included modules & attr_*
   attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain
