@@ -37,6 +37,7 @@ group :development do
 end
 
 group :test, :development do
+  gem "letter_opener"
   gem 'guard'
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
@@ -46,5 +47,5 @@ group :test, :development do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'mocha'
+  #gem 'mocha'
 end
