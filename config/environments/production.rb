@@ -50,7 +50,7 @@ Confer::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+   config.action_mailer.raise_delivery_errors = true
 
   # Enable threaded mode
   # config.threadsafe!
@@ -66,4 +66,13 @@ Confer::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.action_mailer.default_url_options = { :host => 'sleepy-woodland-9571.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address  => "smtp.gmail.com",
+    :port  => 587,
+    :user_name  => "vsu.conf@gmail.com",
+    :password  => "25BJ8kgJ",
+    :authentication  => 'plain',
+    :enable_starttls_auto => true
+  }
 end
