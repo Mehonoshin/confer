@@ -39,6 +39,11 @@ group :development do
   gem 'showoff-io'
 end
 
+group :production do
+  gem 'newrelic_rpm'
+  gem 'thin'
+end
+
 group :test, :development do
   gem "letter_opener"
   gem 'guard'
