@@ -1,4 +1,6 @@
 class ConferencesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @conferences = Conference.all
   end

@@ -46,6 +46,11 @@ class User < ActiveRecord::Base
   ## class methods
 
   public
+
+  def registred?
+    !new_record?
+  end
+
   protected
   private
 end
