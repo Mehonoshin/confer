@@ -1,6 +1,13 @@
 ru:
   menu:
     conferences: "Конференции"
+    sign_in: "Вход"
+    sign_out: "Выйти"
+    account: "Личный кабинет"
+    sign_up: "Регистрация"
+  main:
+    about: "Сервис для создания веб-сайтов научных конфереций"
+    learn_more: "Подробнее"
   conference:
     name: "Название"
     add: "Добавить"

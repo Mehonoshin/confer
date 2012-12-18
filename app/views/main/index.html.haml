@@ -1,4 +1,30 @@
-.banner
-  .banner__photo
-    = image_tag("conference_group_photo.jpg")
-  Main page
+.hero-unit
+  %h1
+    www.vsuconf.ru
+  %p
+    = t('main.about')
+  %p
+    = link_to t('main.learn_more'), "#", class: "btn btn-primary btn-large"
+
+%ul.thumbnails
+  %li.span4
+    .thumbnail
+      = image_tag "conf1.jpg"
+      .caption
+        = link_to "#" do
+          %h3= "ВГУ 2013"
+        %p= "Глобальная конференция ученых в области математики, физики и компьютерных наук"
+  %li.span4
+    .thumbnail
+      = image_tag "conf1.jpg"
+      .caption
+        = link_to "#" do
+          %h3= "ВГУ 2013"
+        %p= "Глобальная конференция ученых в области математики, физики и компьютерных наук"
+  %li.span4
+    .thumbnail
+      = image_tag "conf1.jpg"
+      .caption
+        = link_to "#" do
+          %h3= "ВГУ 2013"
+        %p= "Глобальная конференция ученых в области математики, физики и компьютерных наук"
