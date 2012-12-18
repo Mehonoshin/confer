@@ -1,9 +1,16 @@
-.add-conference-link
-  = link_to t('conference.add'), new_conference_path, class: "btn btn-primary"
+- if can? :create, Conference
+  .add-conference-link
+    = link_to t('conference.add'), new_conference_path, class: "btn btn-primary"
 
-%table
+%table.table.table-bordered
   %tr
     %th= t('conference.name')
+    %th= t('conference.date')
+    %th= t('conference.register_until')
+    %th= t('conference.members_num')
   - @conferences.each do |conf|
     %tr
       %td= link_to conf.name, conference_path(conf)
+      %td= "#{human_date(conf.start_date)} - #{human_date(conf.end_date)}"
+      %td= human_date(conf.registrable_until)
+      %td= "#{conf.guests.count} / #{conf.max_guests}"

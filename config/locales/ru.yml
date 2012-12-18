@@ -10,6 +10,9 @@ ru:
     learn_more: "Подробнее"
   conference:
     name: "Название"
+    date: "Дата проведения"
+    register_until: "Регистрация до"
+    members_num: "Зарегистрировано/общее количество участников"
     add: "Добавить"
     validations:
       start_date_should_be_less_than_end_date: "должна быть меньше даты конца"
