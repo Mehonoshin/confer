@@ -1,6 +1,8 @@
 - if can? :create, Conference
-  .add-conference-link
-    = link_to t('conference.add'), new_conference_path, class: "btn btn-primary"
+  .well
+    %p= t("conference.new_conf_about")
+    .add-conference-link
+      = link_to t('conference.add'), new_conference_path, class: "btn btn-primary"
 
 %table.table.table-bordered
   %tr
