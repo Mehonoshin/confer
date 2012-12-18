@@ -35,11 +35,29 @@ describe Conference do
       conf.valid?
       conf.errors[:start_date].should_not be_empty
     end
+
+    it "should require registration date be less than end date" do
+      conf = FactoryGirl.build(:conference, registrable_until: Time.now, end_date: 1.day.ago)
+      conf.valid?
+      conf.errors[:registrable_until].should_not be_empty
+    end
   end
 
+  context "adding participants" do
+    subject { FactoryGirl.create(:conference, start_date: Time.now, end_date: 1.month.from_now, registrable_until: 2.weeks.from_now) }
+
+    it "should keep registration open" do
+      subject.registration_open?.should be_true
+    end
+
+    it "should not accepted participants" do
+      conf = FactoryGirl.create(:conference, start_date: Time.now, end_date: 1.month.from_now, registrable_until: 1.day.ago)
+      conf.registration_open?.should_not be_true
+    end
+  end
 
   context "when empty fields" do
-    subject { FactoryGirl.build(:conference, name: "", domain: "", start_date: nil, end_date: nil) }
+    subject { FactoryGirl.build(:conference, name: "", domain: "", user_id: nil, start_date: nil, end_date: nil) }
 
     before do
       subject.valid?
@@ -47,6 +65,10 @@ describe Conference do
 
     it "should require name" do
       subject.errors[:name].should_not be_empty
+    end
+
+    it "should require user_id" do
+      subject.errors[:user_id].should_not be_empty
     end
 
     it "should require domain" do

@@ -7,5 +7,6 @@ FactoryGirl.define do
     start_date "2012-12-16 14:00:47"
     end_date "2012-12-16 14:00:47"
     max_guests 1
+    user_id 1
   end
 end

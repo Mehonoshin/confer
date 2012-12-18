@@ -45,6 +45,7 @@ group :production do
 end
 
 group :test, :development do
+  gem "timecop"
   gem "letter_opener"
   gem 'guard'
   gem 'rb-inotify', :require => false
