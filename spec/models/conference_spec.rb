@@ -29,6 +29,10 @@ describe Conference do
       subject.guests.should be_empty
     end
 
+    it "should be in pending state" do
+      subject.state.should be_eql("pending")
+    end
+
     it "should have only one stuff" do
       subject.stuff.size.should be_eql(1)
     end
@@ -39,6 +43,16 @@ describe Conference do
 
     it "creator should have owner role" do
       subject.organizers.last.role.should be_eql("owner")
+    end
+
+    it "should not allow incorrect domain" do
+      conf = FactoryGirl.build(:conference, domain: "sad21=@@#!")
+      conf.should_not be_valid
+    end
+
+    it "should pass correct domain" do
+      conf = FactoryGirl.build(:conference, domain: "sad-21")
+      conf.should be_valid
     end
 
     it "should require unique domain" do
@@ -98,6 +112,20 @@ describe Conference do
 
     it "should require end date" do
       subject.errors[:end_date].should_not be_empty
+    end
+  end
+
+  context "when conference approved" do
+    before(:each) do
+      subject.approve!
+    end
+
+    it "should have approved state" do
+      subject.state.should be_eql("approved")
+    end
+
+    it "should send email to creator" do
+      ActionMailer::Base.deliveries.should_not be_empty
     end
   end
 

@@ -11,6 +11,7 @@
 #  updated_at        :datetime         not null
 #  domain            :string(255)
 #  registrable_until :datetime
+#  state             :string(255)
 #
 
 class Conference < ActiveRecord::Base
@@ -26,6 +27,13 @@ class Conference < ActiveRecord::Base
   has_many :stuff, through: :organizers, source: :user
 
   ## plugins
+  state_machine :initial => :pending do
+    event :approve do
+      transition :pending => :approved
+    end
+
+    after_transition :pending => :approved, :do => :notify_creator
+  end
 
   ## callbacks
   after_create :add_owner
@@ -34,12 +42,8 @@ class Conference < ActiveRecord::Base
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :user_id, presence: true
-  # TODO
-  # проверку формата домена конференции
-  # премодерация конференций! state_machine
-  #, format: TODO
-  validates :domain, presence: true, uniqueness: true
+  validates :user_id, presence: true, on: :create
+  validates :domain, presence: true, uniqueness: true, format: { with: /^[a-zA-Z0-9-]*$/ }
   validate :end_date_greater_than_start_date
   validate :registration_date_less_than_end_date
 
@@ -67,6 +71,10 @@ class Conference < ActiveRecord::Base
 
   protected
   private
+
+    def notify_creator
+      ConferenceMailer.conference_approved(self, organizers.first).deliver
+    end
 
     def registration_date_less_than_end_date
       if end_date.present? && registrable_until.present? && registrable_until > end_date

@@ -1,0 +1,14 @@
+= "#{t('conference.mailer.conference_approved.hello')}, #{@user.email}!"
+%br
+
+= "#{t('conference.mailer.conference_approved.your_conference_is_approved')}"
+= link_to root_url, root_url
+
+%br
+%br
+
+= "#{t('conference.mailer.conference_approved.start_using_it')}"
+= link_to conference_url(@conference), conference_url(@conference)
+
+%br
+= t('conference.mailer.conference_approved.service_administration')

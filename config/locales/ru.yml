@@ -23,3 +23,10 @@ ru:
       start_date_should_be_less_than_end_date: "должна быть меньше даты конца"
       end_date_should_be_greater_than_start_date: "должна быть больше даты конца"
       registrable_until_must_be_less_or_equel_than_end_date: "должная быть меньше либо равна дате окончания"
+    mailer:
+      conference_approved:
+        subject: "Ваша конференция одобрена"
+        hello: "Здравствуйте"
+        your_conference_is_approved: "Вы создали конференцию на сайте, администратор рассмотрел и одобрил вашу заявку"
+        start_using_it: "Вы можете начать приглашать людей и управлять конференцией по адресу:"
+        service_administration: "Администрация сервиса"
