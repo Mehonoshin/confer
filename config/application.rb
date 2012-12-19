@@ -2,6 +2,18 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+# TODO
+# fix to ignore warnings. will be fixed at rails 3.2.10
+if Rails.env.test? || Rails.env.development?
+  require "mocha/version"
+  require "mocha/deprecation"
+  if Mocha::VERSION == "0.13.1" && Rails::VERSION::STRING == "3.2.9"
+    Mocha::Deprecation.mode = :disabled
+  end
+end
+
+
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
