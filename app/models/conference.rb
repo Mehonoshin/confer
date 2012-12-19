@@ -35,6 +35,10 @@ class Conference < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :user_id, presence: true
+  # TODO
+  # проверку формата домена конференции
+  # премодерация конференций! state_machine
+  #, format: TODO
   validates :domain, presence: true, uniqueness: true
   validate :end_date_greater_than_start_date
   validate :registration_date_less_than_end_date
@@ -46,7 +50,19 @@ class Conference < ActiveRecord::Base
   public
 
   def registration_open?
-    Time.now <= registrable_until
+    if registrable_until
+      Time.now <= registrable_until
+    else
+      true
+    end
+  end
+
+  def guests_limit?
+    max_guests.present?
+  end
+
+  def guests_limit_reached?
+    guests.count == max_guests
   end
 
   protected

@@ -4,15 +4,23 @@
     .add-conference-link
       = link_to t('conference.add'), new_conference_path, class: "btn btn-primary"
 
-%table.table.table-bordered
-  %tr
-    %th= t('conference.name')
-    %th= t('conference.date')
-    %th= t('conference.register_until')
-    %th= t('conference.members_num')
-  - @conferences.each do |conf|
+.b-conferences__list
+  %table.table.table-bordered
     %tr
-      %td= link_to conf.name, conference_path(conf)
-      %td= "#{human_date(conf.start_date)} - #{human_date(conf.end_date)}"
-      %td= human_date(conf.registrable_until)
-      %td= "#{conf.guests.count} / #{conf.max_guests}"
+      %th= t('conference.name')
+      %th= t('conference.date')
+      %th= t('conference.register_until')
+      %th= t('conference.members_num')
+      %th= t('conference.registration')
+    - @conferences.each do |conf|
+      %tr{ class: "#{!conf.registration_open? || conf.guests_limit_reached? ? 'registration-closed' : '' }" }
+        %td= link_to conf.name, conference_path(conf)
+        %td= "#{human_date(conf.start_date)} - #{human_date(conf.end_date)}"
+        %td= human_date(conf.registrable_until)
+        %td
+          = conf.guests_limit? ? "#{conf.guests.count} / #{conf.max_guests}" : t('conference.unlimited')
+        %td
+          - if conf.registration_open? && !conf.guests_limit_reached?
+            = button_to t('conference.join'), "#", class: "btn btn-primary"
+          - else
+            = t('conference.registration_closed')

@@ -1,11 +1,28 @@
 require 'spec_helper'
 
 describe Conference do
+  let(:owner) { FactoryGirl.create(:user) }
+  subject { FactoryGirl.create(:conference, user_id: owner.id) }
+
+  it "should notify when guests are limited" do
+    subject.guests_limit?.should be_true
+  end
+
+  it "should notify when guests limit is reached" do
+    guests_limit = subject.max_guests
+    subject.guests << FactoryGirl.create(:user)
+    subject.guests_limit_reached?.should be_true
+  end
+
+  context "when guests number is unlimited" do
+    subject { FactoryGirl.create(:conference, user_id: owner.id, max_guests: nil) }
+
+    it "should notify that guests are unlimited" do
+      subject.guests_limit?.should be_false
+    end
+  end
 
   context "when new" do
-    let(:owner) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:conference, user_id: owner.id) }
-
     it { should be_valid }
 
     it "should have no guests" do
