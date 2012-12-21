@@ -51,7 +51,7 @@ group :test, :development do
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
-  gem 'rspec-rails'
+  gem 'rspec-rails', "~> 2.0"
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'

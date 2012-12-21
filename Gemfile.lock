@@ -306,7 +306,7 @@ DEPENDENCIES
   rb-fsevent
   rb-inotify
   resque
-  rspec-rails
+  rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   showoff-io
   state_machine
