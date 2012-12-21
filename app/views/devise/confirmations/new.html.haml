@@ -1,0 +1,12 @@
+.well
+  %table.devise
+    %tr
+      %td
+        %h2= t('confirmation.resend_instructions')
+        = semantic_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name)) do |f|
+          = f.inputs do
+            = f.input :email, label: t('confirmation.email')
+          = f.actions do
+            = f.action :submit, button_html: { class: "btn btn-large btn-primary" }, label: t('confirmation.submit')
+      %td.shared-links{ valign: "top" }
+        = render "devise/shared/links"

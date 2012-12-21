@@ -8,6 +8,32 @@ ru:
   main:
     about: "Сервис для создания веб-сайтов научных конфереций"
     learn_more: "Подробнее"
+  auth:
+    email: "Электронная почта"
+    password: "Пароль"
+    remember: "Запомнить меня"
+    sign_in: "Вход в систему"
+    to_sign_in: "Войти"
+  registration:
+    sign_up: "Регистрация"
+    email: "Электронная почта"
+    password: "Пароль"
+    password_confirmation: "Повторите пароль"
+    to_sign_up: "Зарегистрироваться"
+    cancel_registration: "Удаление аккаунта"
+    remove_account: "Удалить"
+    are_you_sure: "Вы уверены?"
+    submit: "Применить"
+    edit: "Редактирование учетной записи"
+    current_password: "Текущий пароль"
+  password:
+    reset: "Восстановление пароля"
+    email: "Электронная почта"
+    reset_my_pass: "Получить новый пароль"
+  confirmation:
+    resend_instructions: "Инструкции подтверждения регистрации"
+    email: "Электронная почта"
+    submit: "Отправить еще раз"
   conference:
     name: "Название"
     date: "Дата проведения"

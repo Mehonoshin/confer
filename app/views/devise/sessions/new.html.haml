@@ -1,0 +1,14 @@
+.well
+  %table.devise.auth
+    %tr
+      %td
+        %h2= t('auth.sign_in')
+        = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          = f.inputs do
+            = f.input :email, label: t('auth.email')
+            = f.input :password, label: t('auth.password')
+            = f.input :remember_me, label: t('auth.remember'), as: :boolean
+          = f.actions do
+            = f.action :submit, button_html: { class: "btn btn-large btn-primary" }, label: t('auth.to_sign_in')
+      %td.shared-links{ valign: "top" }
+        = render "devise/shared/links"

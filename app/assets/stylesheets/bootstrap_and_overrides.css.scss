@@ -1,3 +1,36 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+table.auth {
+  label.control-label {
+    display: none;
+  }
+}
+
+.form-actions {
+  border-top: none;
+  background-color: transparent;
+}
+
+form#new_user {
+  input {
+    &#user_email {
+      width: 200px;
+    }
+    &#user_password {
+      width: 200px;
+    }
+    &#user_password_confirmation {
+      width: 200px;
+    }
+
+  }
+}
+
+table.devise {
+  td.shared-links {
+    padding-top: 50px;
+    padding-left: 100px;
+  }
+}
