@@ -6,3 +6,13 @@ $ ->
   $('.datepicker').datepicker({
     'dateFormat': 'dd-mm-yy'
   })
+
+  $(".b-conferences__nav a").click (e)->
+    e.preventDefault()
+    jPrevVisible = $('.b-conferences__nav .active')
+    jNewVisible = $(this)
+    jPrevVisible.removeClass("active")
+    $('.b-conferences__list table.' + jNewVisible.attr("class")).removeClass("hidden")
+    $('.b-conferences__list table.' + jPrevVisible.attr("class")).addClass("hidden")
+    jNewVisible.parent().addClass("active")
+

@@ -2,6 +2,10 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
+.hidden {
+  display: none;
+}
+
 table.auth {
   label.control-label {
     display: none;

@@ -4,23 +4,39 @@
     .add-conference-link
       = link_to t('conference.add'), new_conference_path, class: "btn btn-primary"
 
+.b-conferences__nav
+  %ul.nav.nav-tabs
+    %li.future.active
+      = link_to t("conference.nav.future"), "#", class: "future"
+    %li.past
+      = link_to t("conference.nav.past"), "#", class: "past"
+    %li.all
+      = link_to t("conference.nav.all"), "#", class: "all"
+
 .b-conferences__list
-  %table.table.table-bordered
+  %table.table.table-bordered.future
     %tr
       %th= t('conference.name')
       %th= t('conference.date')
       %th= t('conference.register_until')
       %th= t('conference.members_num')
       %th= t('conference.registration')
-    - @conferences.each do |conf|
-      %tr{ class: "#{!conf.registration_open? || conf.guests_limit_reached? ? 'registration-closed' : '' }" }
-        %td= link_to conf.name, conference_path(conf)
-        %td= "#{human_date(conf.start_date)} - #{human_date(conf.end_date)}"
-        %td= human_date(conf.registrable_until)
-        %td
-          = conf.guests_limit? ? "#{conf.guests.count} / #{conf.max_guests}" : t('conference.unlimited')
-        %td
-          - if conf.registration_open? && !conf.guests_limit_reached?
-            = button_to t('conference.join'), "#", class: "btn btn-primary"
-          - else
-            = t('conference.registration_closed')
+    = render partial: "conference", collection: @future_conferences
+
+  %table.table.table-bordered.past.hidden
+    %tr
+      %th= t('conference.name')
+      %th= t('conference.date')
+      %th= t('conference.register_until')
+      %th= t('conference.members_num')
+      %th= t('conference.registration')
+    = render partial: "conference", collection: @past_conferences
+
+  %table.table.table-bordered.all.hidden
+    %tr
+      %th= t('conference.name')
+      %th= t('conference.date')
+      %th= t('conference.register_until')
+      %th= t('conference.members_num')
+      %th= t('conference.registration')
+    = render partial: "conference", collection: @all_conferences

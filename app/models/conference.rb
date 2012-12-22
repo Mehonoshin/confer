@@ -48,6 +48,8 @@ class Conference < ActiveRecord::Base
   validate :registration_date_less_than_end_date
 
   ## named_scopes
+  scope :future, ->(current_time) { where("end_date >= ?", current_time) }
+  scope :past, ->(current_time) { where("end_date < ?", current_time) }
 
   ## class methods
 

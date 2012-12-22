@@ -1,0 +1,12 @@
+%tr{ class: "#{!conference.registration_open? || conference.guests_limit_reached? ? 'registration-closed' : '' }" }
+  %td= link_to conference.name, conference_path(conference)
+  %td= "#{human_date(conference.start_date)} - #{human_date(conference.end_date)}"
+  %td= human_date(conference.registrable_until)
+  %td
+    = conference.guests_limit? ? "#{conference.guests.count} / #{conference.max_guests}" : t('conference.unlimited')
+  %td
+    - if conference.registration_open? && !conference.guests_limit_reached?
+      = button_to t('conference.join'), "#", class: "btn btn-primary"
+    - else
+      = t('conference.registration_closed')
+

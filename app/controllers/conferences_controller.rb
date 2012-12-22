@@ -6,7 +6,9 @@ class ConferencesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @conferences = Conference.all
+    @all_conferences = Conference.order("start_date DESC")
+    @future_conferences = Conference.future(Time.now).order("start_date DESC")
+    @past_conferences = Conference.past(Time.now).order("start_date DESC")
   end
 
   def new
