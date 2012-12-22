@@ -85,6 +85,14 @@ describe Conference do
       conf = FactoryGirl.create(:conference, start_date: Time.now, end_date: 1.month.from_now, registrable_until: 1.day.ago)
       conf.registration_open?.should_not be_true
     end
+
+    context "when no registration deadline" do
+      subject { FactoryGirl.build(:conference, start_date: 1.month.ago, end_date: 1.day.ago) }
+
+      it "should not accepted participants by end_date" do
+        subject.registration_open?.should_not be_true
+      end
+    end
   end
 
   context "when empty fields" do

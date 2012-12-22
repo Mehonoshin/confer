@@ -57,9 +57,9 @@ class Conference < ActiveRecord::Base
 
   def registration_open?
     if registrable_until
-      Time.now <= registrable_until
+      Time.now <= registrable_until && Time.now <= end_date
     else
-      true
+      Time.now <= end_date
     end
   end
 
