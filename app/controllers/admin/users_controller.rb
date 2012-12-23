@@ -11,12 +11,12 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def make_admin
-    @user.update_attribute("service_admin", true)
+    @user.admin!
     redirect_to admin_users_path
   end
 
   def make_user
-    @user.update_attribute("service_admin", false)
+    @user.user!
     redirect_to admin_users_path
   end
 

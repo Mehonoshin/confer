@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     update_attribute("service_admin", true)
   end
 
+  def user!
+    update_attribute("service_admin", false)
+  end
+
   protected
   private
 end
