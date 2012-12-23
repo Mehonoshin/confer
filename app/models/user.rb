@@ -19,6 +19,7 @@
 #  confirmation_token     :string(255)
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
+#  service_admin          :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -29,11 +30,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at
 
   ## associations
-  has_many :participations, class_name: "Participant"
-  has_many :takes_part, through: :participations, source: :conference
+  has_many :participations, class_name: "Participant", dependent: :destroy
+  has_many :takes_part, through: :participations, source: :conference, dependent: :destroy
 
-  has_many :organizer_roles, class_name: "Organizer"
-  has_many :organized, through: :organizer_roles, source: :conference
+  has_many :organizer_roles, class_name: "Organizer", dependent: :destroy
+  has_many :organized, through: :organizer_roles, source: :conference, dependent: :destroy
 
   ## plugins
 
@@ -49,6 +50,14 @@ class User < ActiveRecord::Base
 
   def registred?
     !new_record?
+  end
+
+  def admin?
+    service_admin
+  end
+
+  def admin!
+    update_attribute("service_admin", true)
   end
 
   protected

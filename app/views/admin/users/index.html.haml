@@ -1,0 +1,16 @@
+%h3= t('admin.users.management')
+%table.table.table-bordered
+  %tr
+    %th= t('admin.users.email')
+    %th= t('admin.users.created_at')
+    %th= t('admin.users.admin')
+  - @users.each do |user|
+    %tr
+      %td= user.email
+      %td= human_date_with_time(user.created_at)
+      - if user.admin?
+        %td
+          %span.label.label-success
+            = t('admin.users.is_admin')
+      - else
+        %td= button_to t('admin.users.make_admin'), "#", class: "btn btn-primary"

@@ -6,6 +6,10 @@ class Ability
 
     can :read, Conference
 
+    if user.admin?
+      can :manage, :all
+    end
+
     if user.registred?
       can :create, Conference
     end
