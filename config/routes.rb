@@ -2,7 +2,13 @@ Confer::Application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    resources :users
+    resources :users do
+      member do
+        put :make_admin
+        put :make_user
+        put :confirm
+      end
+    end
     resources :conferences
   end
 
