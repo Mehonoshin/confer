@@ -7,5 +7,6 @@
       = f.input :end_date, as: :string, input_html: { class: "datepicker" }, label: t('conference.form.end_date')
       = f.input :registrable_until, as: :string, input_html: { class: "datepicker" }, label: t('conference.form.registrable_until')
       = f.input :max_guests, label: t('conference.form.max_guests')
+      = f.input :description, label: t('conference.form.description')
     = f.actions do
       = f.action :submit, button_html: { class: "btn btn-success" }, label: t('conference.form.submit')

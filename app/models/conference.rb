@@ -12,11 +12,12 @@
 #  domain            :string(255)
 #  registrable_until :datetime
 #  state             :string(255)
+#  description       :text
 #
 
 class Conference < ActiveRecord::Base
   ## included modules & attr_*
-  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until
+  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description
   attr_accessor :user_id
 
   ## associations
@@ -50,6 +51,8 @@ class Conference < ActiveRecord::Base
   ## named_scopes
   scope :future, ->(current_time) { where("end_date >= ?", current_time) }
   scope :past, ->(current_time) { where("end_date < ?", current_time) }
+  scope :with_description, where("description IS NOT NULL")
+  scope :random, order("RANDOM()")
 
   ## class methods
 

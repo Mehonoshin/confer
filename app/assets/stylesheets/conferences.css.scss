@@ -14,6 +14,11 @@ form#new_conference {
     margin-right: 10px;
   }
 
+  textarea#conference_description {
+    width: 400px;
+    height: 100px;
+  }
+
   input {
     &#conference_name {
       width: 400px;

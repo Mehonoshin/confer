@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223075403) do
+ActiveRecord::Schema.define(:version => 20121224212109) do
 
   create_table "conferences", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20121223075403) do
     t.string   "domain"
     t.datetime "registrable_until"
     t.string   "state"
+    t.text     "description"
   end
 
   create_table "organizers", :force => true do |t|
