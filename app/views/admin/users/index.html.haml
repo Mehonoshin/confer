@@ -1,30 +1,32 @@
 %h3= t('admin.users.management')
-%table.table.table-bordered
-  %tr
-    %th= t('admin.users.email')
-    %th= t('admin.users.created_at')
-    %th= t('admin.users.status')
-    %th= t('admin.users.actions')
-    %th= t('admin.users.removing')
-  - @users.each do |user|
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
     %tr
-      %td= user.email
-      %td= human_date_with_time(user.created_at)
-      %td
-        - if user.admin?
-          %span.label.label-info= t('admin.users.is_admin')
-        - if !user.confirmed?
-          %span.label.label-warning= t('admin.users.unconfirmed')
-        - if user.confirmed? && !user.admin?
-          %span.label= t('admin.users.registred')
-      %td
-        - if !user.admin? && user.confirmed?
-          = button_to t('admin.users.make_admin'), make_admin_admin_user_path(user), method: :put, class: "btn btn-primary btn-small", confirm: t("admin.users.confirm.make_admin")
-        - if user.admin?
-          = button_to t('admin.users.make_user'), make_user_admin_user_path(user), method: :put, class: "btn btn-small", confirm: t("admin.users.confirm.make_user")
-        - if !user.confirmed?
-          = button_to t('admin.users.confirmation'), confirm_admin_user_path(user), method: :put, class: "btn btn-small btn-warning", confirm: t("admin.users.confirm.confirm")
-      %td
-        = button_to t('admin.users.remove'), admin_user_path(user), method: :delete, class: "btn btn-danger btn-small", confirm: t("admin.users.confirm.remove")
+      %th= t('admin.users.email')
+      %th= t('admin.users.created_at')
+      %th= t('admin.users.status')
+      %th= t('admin.users.actions')
+      %th= t('admin.users.removing')
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= human_date_with_time(user.created_at)
+        %td
+          - if user.admin?
+            %span.label.label-info= t('admin.users.is_admin')
+          - if !user.confirmed?
+            %span.label.label-warning= t('admin.users.unconfirmed')
+          - if user.confirmed? && !user.admin?
+            %span.label= t('admin.users.registred')
+        %td
+          - if !user.admin? && user.confirmed?
+            = button_to t('admin.users.make_admin'), make_admin_admin_user_path(user), method: :put, class: "btn btn-primary btn-small", confirm: t("admin.users.confirm.make_admin")
+          - if user.admin?
+            = button_to t('admin.users.make_user'), make_user_admin_user_path(user), method: :put, class: "btn btn-small", confirm: t("admin.users.confirm.make_user")
+          - if !user.confirmed?
+            = button_to t('admin.users.confirmation'), confirm_admin_user_path(user), method: :put, class: "btn btn-small btn-warning", confirm: t("admin.users.confirm.confirm")
+        %td
+          = button_to t('admin.users.remove'), admin_user_path(user), method: :delete, class: "btn btn-danger btn-small", confirm: t("admin.users.confirm.remove")
 
 = paginate @users
