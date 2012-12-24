@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.ui.datepicker
 //= require jquery_ujs
+//= require_tree ./plugins
 //= require bootstrap
 //= require bootstrap-scrollspy
 //= require bootstrap-modal

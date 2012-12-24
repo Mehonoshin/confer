@@ -7,6 +7,8 @@ $ ->
     'dateFormat': 'dd-mm-yy'
   })
 
+  $('table').tablesorter()
+
   $(".b-conferences__nav a").click (e)->
     e.preventDefault()
     jPrevVisible = $('.b-conferences__nav .active')
