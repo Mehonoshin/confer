@@ -7,6 +7,10 @@ admin.admin!
   user.confirm!
 end
 
-25.times do
+15.times do
+  FactoryGirl.create(:conference, user_id: User.last.id, start_date: Time.now.tomorrow, end_date: 2.days.from_now)
+end
+
+15.times do
   FactoryGirl.create(:conference, user_id: User.last.id)
 end
