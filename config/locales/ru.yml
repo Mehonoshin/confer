@@ -69,6 +69,7 @@ ru:
     join: "Участвовать"
     registration_closed: "Регистрация закрыта"
     registration: "Регистрация"
+    create_new: "Создать заявку на конференцию"
     form:
       domain: "Домен"
       name: "Название конференции"
@@ -76,6 +77,7 @@ ru:
       end_date: "Дата окончания"
       registrable_until: "Регистрация до"
       max_guests: "Максимальное количество участников"
+      submit: "Применить"
       hints:
         domain: "вам будет выдан домен 2 уровня, вида my-event.vsuconf.ru"
     nav:
