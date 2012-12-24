@@ -69,6 +69,15 @@ ru:
     join: "Участвовать"
     registration_closed: "Регистрация закрыта"
     registration: "Регистрация"
+    form:
+      domain: "Домен"
+      name: "Название конференции"
+      start_date: "Дата начала"
+      end_date: "Дата окончания"
+      registrable_until: "Регистрация до"
+      max_guests: "Максимальное количество участников"
+      hints:
+        domain: "вам будет выдан домен 2 уровня, вида my-event.vsuconf.ru"
     nav:
       future: "Текущие"
       past: "Прошедшие"
