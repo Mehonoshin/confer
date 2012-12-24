@@ -15,28 +15,34 @@
 
 .b-conferences__list
   %table.table.table-bordered.future
-    %tr
-      %th= t('conference.name')
-      %th= t('conference.date')
-      %th= t('conference.register_until')
-      %th= t('conference.members_num')
-      %th= t('conference.registration')
-    = render partial: "conference", collection: @future_conferences
+    %thead
+      %tr
+        %th= t('conference.name')
+        %th= t('conference.date')
+        %th= t('conference.register_until')
+        %th= t('conference.members_num')
+        %th= t('conference.registration')
+    %tbody
+      = render partial: "conference", collection: @future_conferences
 
   %table.table.table-bordered.past.hidden
-    %tr
-      %th= t('conference.name')
-      %th= t('conference.date')
-      %th= t('conference.register_until')
-      %th= t('conference.members_num')
-      %th= t('conference.registration')
-    = render partial: "conference", collection: @past_conferences
+    %thead
+      %tr
+        %th= t('conference.name')
+        %th= t('conference.date')
+        %th= t('conference.register_until')
+        %th= t('conference.members_num')
+        %th= t('conference.registration')
+    %tbody
+      = render partial: "conference", collection: @past_conferences
 
   %table.table.table-bordered.all.hidden
-    %tr
-      %th= t('conference.name')
-      %th= t('conference.date')
-      %th= t('conference.register_until')
-      %th= t('conference.members_num')
-      %th= t('conference.registration')
-    = render partial: "conference", collection: @all_conferences
+    %thead
+      %tr
+        %th= t('conference.name')
+        %th= t('conference.date')
+        %th= t('conference.register_until')
+        %th= t('conference.members_num')
+        %th= t('conference.registration')
+    %tbody
+      = render partial: "conference", collection: @all_conferences
