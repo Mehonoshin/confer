@@ -2,9 +2,9 @@ class ConferencesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @all_conferences = Conference.order("start_date DESC")
-    @future_conferences = Conference.future(Time.now).order("start_date DESC")
-    @past_conferences = Conference.past(Time.now).order("start_date DESC")
+    @all_conferences = Conference.with_state(:approved).order("start_date DESC")
+    @future_conferences = Conference.with_state(:approved).future(Time.now).order("start_date DESC")
+    @past_conferences = Conference.with_state(:approved).past(Time.now).order("start_date DESC")
   end
 
   def new
