@@ -7,22 +7,22 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path
+    redirect_to admin_users_path, notice: t('admin.users.notices.removed')
   end
 
   def make_admin
     @user.admin!
-    redirect_to admin_users_path
+    redirect_to admin_users_path, notice: t('admin.users.notices.made_admin')
   end
 
   def make_user
     @user.user!
-    redirect_to admin_users_path
+    redirect_to admin_users_path, notice: t('admin.users.notices.made_user')
   end
 
   def confirm
     @user.confirm!
-    redirect_to admin_users_path
+    redirect_to admin_users_path, notice: t('admin.users.notices.confirmed')
   end
 
   private

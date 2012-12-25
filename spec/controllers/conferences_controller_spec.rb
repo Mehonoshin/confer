@@ -47,7 +47,7 @@ describe ConferencesController do
 
     it "should redirect to conference page on create" do
       post :create, conference: FactoryGirl.attributes_for(:conference)
-      response.should redirect_to Conference.last
+      response.should redirect_to conferences_path
     end
   end
 

@@ -14,6 +14,14 @@ describe Admin::ConferencesController do
       put :approve, { id: FactoryGirl.create(:conference).id }
       response.should redirect_to admin_conferences_path
     end
+
+    it "should remove conferences" do
+      conf = FactoryGirl.create(:conference)
+      Conference.all.count.should be_eql(1)
+      delete :destroy, { id: conf.id }
+      response.should redirect_to admin_conferences_path
+      Conference.all.count.should be_eql(0)
+    end
   end
 
   context "when not authorized as admin" do

@@ -20,7 +20,7 @@ class ConferencesController < ApplicationController
     attrs[:user_id] = current_user.id
     @conference = Conference.create(attrs)
     if @conference.valid?
-      redirect_to conference_path(@conference)
+      redirect_to conferences_path, notice: t('conference.notices.created')
     else
       render :new
     end
