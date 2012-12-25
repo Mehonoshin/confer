@@ -1,3 +1,12 @@
+.b-conferences__nav.admin
+  %ul.nav.nav-tabs
+    %li.active.all
+      = link_to t("admin.conferences.nav.all"), "#", class: "all"
+    %li.approved
+      = link_to t("admin.conferences.nav.approved"), "#", class: "approved"
+    %li.pending
+      = link_to t("admin.conferences.nav.pending"), "#", class: "pending"
+
 %table.table.table-bordered.tablesorter.tablersorter-default
   %thead
     %tr
