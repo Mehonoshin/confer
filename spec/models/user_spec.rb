@@ -1,3 +1,4 @@
+#encoding: utf-8
 # == Schema Information
 #
 # Table name: users
@@ -35,6 +36,35 @@ describe User do
 
     it "should have empty address" do
       subject.address.should be_nil
+    end
+  end
+
+  context "when address is specified" do
+    subject { FactoryGirl.create(:user, address: "Russia, Voronezh") }
+
+    it "should save city and country" do
+      subject.country.should be_eql("Россия")
+      subject.city.should be_eql("Воронеж")
+    end
+
+    it "should change city" do
+      subject.update_attributes(address: "Россия, Москва")
+      subject.country.should be_eql("Россия")
+      subject.city.should be_eql("Москва")
+    end
+
+    context "when address is empty" do
+      it "should not change city and country" do
+        subject.update_attributes(address: "")
+        subject.country.should be_eql("Россия")
+        subject.city.should be_eql("Воронеж")
+      end
+
+      it "should not change city and country" do
+        subject.update_attributes(address: " ,")
+        subject.country.should be_eql("Россия")
+        subject.city.should be_eql("Воронеж")
+      end
     end
 
   end

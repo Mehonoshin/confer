@@ -73,8 +73,13 @@ class User < ActiveRecord::Base
     update_attribute("service_admin", false)
   end
 
+  def address=(value)
+    @address = value
+  end
+
   def address
-    "#{country}, #{city}" if country.present? && city.present?
+    return @address unless @address.nil?
+    return "#{country}, #{city}" if country.present? && city.present?
   end
 
   protected
@@ -82,9 +87,11 @@ class User < ActiveRecord::Base
 
     def geocode
       result = Geocoder.search(address).first
-      self.latitude = result.coordinates[0]
-      self.longitude = result.coordinates[1]
-      self.country = result.country
-      self.city = result.city
+      unless result.nil?
+        self.latitude = result.coordinates[0]
+        self.longitude = result.coordinates[1]
+        self.country = result.country
+        self.city = result.city
+      end
     end
 end
