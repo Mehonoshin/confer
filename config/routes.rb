@@ -9,7 +9,11 @@ Confer::Application.routes.draw do
         put :confirm
       end
     end
-    resources :conferences
+    resources :conferences do
+      member do
+        put :approve
+      end
+    end
   end
 
   resources :users

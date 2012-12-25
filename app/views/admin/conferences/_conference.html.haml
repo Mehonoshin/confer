@@ -1,0 +1,9 @@
+%tr{ class: "#{conference.approved? ? 'approved' : 'pending' }" }
+  %td= conference.name
+  %td= conference.domain
+  %td= conference.description
+  %td= human_date_with_time(conference.start_date)
+  %td= human_date_with_time(conference.end_date)
+  %td= human_date_with_time(conference.registrable_until)
+  %td= conference.max_guests
+  %td= button_to t('admin.conferences.approve'), approve_admin_conference_path(conference), method: :put, class: "btn btn-success btn-small", confirm: t("admin.conferences.confirm_approve")

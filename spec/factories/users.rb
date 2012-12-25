@@ -26,4 +26,7 @@ FactoryGirl.define do
     password_confirmation { |u| u.password}
     confirmed_at 1.minute.ago
   end
+  factory :admin_user, parent: :user do
+    service_admin true
+  end
 end

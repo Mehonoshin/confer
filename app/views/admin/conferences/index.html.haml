@@ -1,0 +1,13 @@
+%table.table.table-bordered.tablesorter.tablersorter-default
+  %thead
+    %tr
+      %th= t('admin.conferences.name')
+      %th= t('admin.conferences.domain')
+      %th= t('admin.conferences.description')
+      %th= t('admin.conferences.start_date')
+      %th= t('admin.conferences.end_date')
+      %th= t('admin.conferences.registrable_until')
+      %th= t('admin.conferences.max_guests')
+      %th= t('admin.conferences.actions')
+  %tbody
+    = render partial: "conference", collection: @conferences
