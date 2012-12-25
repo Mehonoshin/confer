@@ -33,5 +33,9 @@ describe User do
       subject.organized.should be_empty
     end
 
+    it "should have empty address" do
+      subject.address.should be_nil
+    end
+
   end
 end

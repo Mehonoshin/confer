@@ -1,3 +1,5 @@
+# == Schema Information
+#
 # Table name: users
 #
 #  id                     :integer          not null, primary key
@@ -72,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def address
-    "#{country}, #{city}"
+    "#{country}, #{city}" if country.present? && city.present?
   end
 
   protected
