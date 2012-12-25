@@ -11,6 +11,7 @@ gem 'kaminari'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem "carrierwave"
+gem "geocoder"
 
 gem "airbrake"
 gem 'whenever', :require => false

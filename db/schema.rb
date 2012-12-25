@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224212109) do
+ActiveRecord::Schema.define(:version => 20121225183728) do
 
   create_table "conferences", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,13 @@ ActiveRecord::Schema.define(:version => 20121224212109) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "service_admin",          :default => false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "country"
+    t.string   "city"
+    t.string   "full_name"
+    t.string   "phone"
+    t.text     "about"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

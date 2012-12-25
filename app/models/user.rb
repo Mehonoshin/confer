@@ -1,5 +1,3 @@
-# == Schema Information
-#
 # Table name: users
 #
 #  id                     :integer          not null, primary key
@@ -20,14 +18,22 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  service_admin          :boolean          default(FALSE)
+#  latitude               :float
+#  longitude              :float
+#  country                :string(255)
+#  city                   :string(255)
+#  full_name              :string(255)
+#  phone                  :string(255)
+#  about                  :text
 #
-
 class User < ActiveRecord::Base
   ## included modules & attr_*
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at,
+    :address, :full_name, :phone, :country, :city, :about, :current_password
+  attr_accessor :address, :current_password
 
   ## associations
   has_many :participations, class_name: "Participant", dependent: :destroy
@@ -39,6 +45,7 @@ class User < ActiveRecord::Base
   ## plugins
 
   ## callbacks
+  before_save :geocode, if: "address.present?"
 
   ## validations
 
@@ -64,6 +71,18 @@ class User < ActiveRecord::Base
     update_attribute("service_admin", false)
   end
 
+  def address
+    "#{country}, #{city}"
+  end
+
   protected
   private
+
+    def geocode
+      result = Geocoder.search(address).first
+      self.latitude = result.coordinates[0]
+      self.longitude = result.coordinates[1]
+      self.country = result.country
+      self.city = result.city
+    end
 end

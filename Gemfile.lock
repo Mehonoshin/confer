@@ -89,6 +89,7 @@ GEM
     formtastic-bootstrap (2.0.0)
       formtastic (~> 2.2)
       formtastic-bootstrap
+    geocoder (1.1.6)
     girl_friday (0.11.1)
       connection_pool (~> 0.9.0)
       rubinius-actor
@@ -286,6 +287,7 @@ DEPENDENCIES
   factory_girl_rails
   formtastic
   formtastic-bootstrap
+  geocoder
   guard
   guard-annotate
   guard-resque
