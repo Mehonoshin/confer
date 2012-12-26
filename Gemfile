@@ -33,6 +33,7 @@ group :development do
   gem 'pry-rails'
   gem 'ultimate-log-silencer'
   gem "annotate"
+  gem 'guard-zeus'
   gem 'guard-annotate'
   gem 'guard-resque'
   gem 'guard-rspec'
