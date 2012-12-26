@@ -29,9 +29,6 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
-    airbrake (3.1.6)
-      builder
-      girl_friday
     annotate (2.5.0)
       rake
     arel (3.0.2)
@@ -61,7 +58,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    connection_pool (0.9.2)
     daemons (1.1.9)
     database_cleaner (0.9.1)
     dev_log_in (0.0.4)
@@ -90,9 +86,6 @@ GEM
       formtastic (~> 2.2)
       formtastic-bootstrap
     geocoder (1.1.6)
-    girl_friday (0.11.1)
-      connection_pool (~> 0.9.0)
-      rubinius-actor
     guard (1.5.4)
       listen (>= 0.4.2)
       lumberjack (>= 1.0.2)
@@ -180,6 +173,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.3)
+    ratchetio (0.4.10)
     rb-fchange (0.0.6)
       ffi
     rb-fsevent (0.9.2)
@@ -212,9 +206,6 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
-    rubinius-actor (0.0.2)
-      rubinius-core-api
-    rubinius-core-api (0.0.1)
     rubyzip (0.9.9)
     sass (3.2.3)
     sass-rails (3.2.5)
@@ -273,7 +264,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrake
   annotate
   bootstrap-sass
   cancan
@@ -304,6 +294,7 @@ DEPENDENCIES
   pg
   pry-rails
   rails (= 3.2.9)
+  ratchetio (>= 0.4.0)
   rb-fchange
   rb-fsevent
   rb-inotify

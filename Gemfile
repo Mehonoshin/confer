@@ -13,7 +13,7 @@ gem 'formtastic-bootstrap'
 gem "carrierwave"
 gem "geocoder"
 
-gem "airbrake"
+gem 'ratchetio', '>= 0.4.0'
 gem 'whenever', :require => false
 gem 'resque', :require => "resque/server"
 gem 'dev_log_in'
