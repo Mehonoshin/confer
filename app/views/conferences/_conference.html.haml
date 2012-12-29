@@ -1,5 +1,5 @@
 %tr{ class: "#{!conference.registration_open? || conference.guests_limit_reached? ? 'registration-closed' : '' }" }
-  %td= link_to conference.name, conference_path(conference)
+  %td= link_to conference.name, url_for(controller: :main, host: request.host, subdomain: conference.domain)
   %td= "#{human_date(conference.start_date)} - #{human_date(conference.end_date)}"
   %td= human_date(conference.registrable_until)
   %td

@@ -1,5 +1,11 @@
+require "multidomain"
 Confer::Application.routes.draw do
+
   devise_for :users, controllers: { registrations: "registrations" }
+
+  constraints(Multidomain) do
+    get "/" => "projects#index"
+  end
 
   namespace :admin do
     resources :users do
