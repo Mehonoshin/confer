@@ -25,5 +25,6 @@ Confer::Application.routes.draw do
   resources :users
   resources :conferences
 
+  get "/about" => "main#about", as: :about
   root :to => 'main#index'
 end

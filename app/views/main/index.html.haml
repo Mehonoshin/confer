@@ -4,7 +4,7 @@
   %p
     = t('main.about')
   %p
-    = link_to t('main.learn_more'), "#", class: "btn btn-primary btn-large"
+    = link_to t('main.learn_more'), about_path, class: "btn btn-primary btn-large"
 
 %ul.thumbnails
   - @conferences.each do |conf|
