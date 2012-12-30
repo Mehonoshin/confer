@@ -1,15 +1,5 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ConferencesHelper. For example:
-#
-# describe ConferencesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe ConferencesHelper do
 
   describe "human_date_with_time" do
@@ -35,6 +25,20 @@ describe ConferencesHelper do
       it "should format it" do
         human_date("2012-12-22 02:07:05 +0400".to_datetime).to_s.should be_eql("22.12.2012")
       end
+    end
+  end
+
+  describe "conference_site_link" do
+    subject { FactoryGirl.create(:conference) }
+
+    it "should return plain link if no block passed" do
+      helper.conference_site_link(subject).should include(subject.name)
+    end
+
+    it "should execute block passed to helper" do
+      helper.conference_site_link(subject) do
+        "<h3>#{subject.name}</h3>"
+      end.should include("h3")
     end
   end
 

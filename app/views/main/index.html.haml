@@ -12,6 +12,6 @@
       .thumbnail
         = image_tag "conf1.jpg"
         .caption
-          = link_to conference_path(conf) do
+          = conference_site_link(conf) do
             %h3= conf.name
           %p= conf.description
