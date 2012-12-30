@@ -55,7 +55,7 @@ group :test, :development do
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem 'rspec-rails', "~> 2.0"
-  gem 'capybara'
+  gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
