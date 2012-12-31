@@ -71,6 +71,9 @@ class User < ActiveRecord::Base
   ## associations
   has_many :participations, class_name: "Participant", dependent: :destroy
   has_many :takes_part, through: :participations, source: :conference, dependent: :destroy
+  # TODO
+  # bronen, fix it
+  #has_many :speeches, through: :participations, source: :report, dependent: :destroy
 
   has_many :organizer_roles, class_name: "Organizer", dependent: :destroy
   has_many :organized, through: :organizer_roles, source: :conference, dependent: :destroy

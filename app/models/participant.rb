@@ -17,6 +17,7 @@ class Participant < ActiveRecord::Base
   ## associations
   belongs_to :user
   belongs_to :conference
+  has_many :reports, dependent: :destroy
 
   ## plugins
   state_machine :initial => :new do

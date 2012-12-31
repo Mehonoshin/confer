@@ -5,6 +5,10 @@ describe Participant do
     subject { FactoryGirl.create(:participant) }
 
     it { should be_valid }
+
+    it "should have no reports" do
+      subject.reports.should be_empty
+    end
   end
 
   context "invalid object" do

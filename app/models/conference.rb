@@ -27,6 +27,8 @@ class Conference < ActiveRecord::Base
   has_many :organizers
   has_many :stuff, through: :organizers, source: :user
 
+  has_many :reports, dependent: :destroy
+
   ## plugins
   state_machine :initial => :pending do
     event :approve do
