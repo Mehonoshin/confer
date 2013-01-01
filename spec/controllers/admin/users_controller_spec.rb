@@ -7,7 +7,7 @@ describe Admin::UsersController do
   context "when not authorized" do
     it "should redirect to too page" do
       get :index
-      response.should redirect_to root_url
+      response.should redirect_to new_user_session_path
     end
   end
 

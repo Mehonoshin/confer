@@ -4,6 +4,7 @@ Confer::Application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   constraints(Multidomain) do
+    resources :participants
     get "/" => "projects#index"
   end
 

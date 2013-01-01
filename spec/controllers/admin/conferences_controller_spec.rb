@@ -24,10 +24,21 @@ describe Admin::ConferencesController do
     end
   end
 
-  context "when not authorized as admin" do
+  context "when not authorized" do
     it "should redirect to root path" do
       get :index
-      response.should redirect_to root_path
+      response.should redirect_to new_user_session_path
+    end
+  end
+
+  context "when authenticated without admin role" do
+    before do
+      sign_in FactoryGirl.create(:user)
+    end
+
+    it "should redirect to root path" do
+      get :index
+      response.should redirect_to root_url
     end
   end
 

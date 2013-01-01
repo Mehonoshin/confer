@@ -1,0 +1,9 @@
+%h3= t('projects.participant.form.title')
+= semantic_form_for @participant do |f|
+  %span.show-report-link= link_to t("projects.participant.form.show_report"), "#"
+  .report_fields.hidden
+    = f.semantic_fields_for :reports do |r|
+      = r.input :title, label: t('projects.participant.form.report_title')
+      = r.input :description, label: t('projects.participant.form.report_description')
+  = f.actions do
+    = f.action :submit, button_html: { class: "btn btn-success" }, label: t('projects.participant.form.take_part')

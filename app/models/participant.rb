@@ -12,12 +12,13 @@
 
 class Participant < ActiveRecord::Base
   ## included modules & attr_*
-  attr_accessible :conference_id, :state, :user_id
+  attr_accessible :conference_id, :state, :user_id, :reports_attributes
 
   ## associations
   belongs_to :user
   belongs_to :conference
   has_many :reports, dependent: :destroy
+  accepts_nested_attributes_for :reports
 
   ## plugins
   state_machine :initial => :new do

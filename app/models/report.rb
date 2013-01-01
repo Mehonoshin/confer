@@ -20,13 +20,19 @@ class Report < ActiveRecord::Base
   belongs_to :conference
 
   ## plugins
+  state_machine :initial => :pending do
+    event :approve do
+      transition :pending => :approved
+    end
+
+    #after_transition :pending => :approved, :do => :notify_creator
+  end
 
   ## callbacks
 
   ## validations
   validates :title, presence: true
   validates :description, presence: true
-  validates :participant_id, presence: true
   validates :conference_id, presence: true
 
   ## named_scopes

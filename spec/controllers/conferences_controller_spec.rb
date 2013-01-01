@@ -18,12 +18,12 @@ describe ConferencesController do
 
     it "should redirect to root path on creating record" do
       post :create, conference: FactoryGirl.attributes_for(:conference)
-      response.should redirect_to root_url
+      response.should redirect_to new_user_session_path
     end
 
     it "should redirect to root path on new page visit" do
       get :new
-      response.should redirect_to root_url
+      response.should redirect_to new_user_session_path
     end
 
   end
