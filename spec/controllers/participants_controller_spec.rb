@@ -3,7 +3,8 @@ require 'spec_helper'
 describe ParticipantsController do
   subject { FactoryGirl.create(:participant) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:conference) { FactoryGirl.create(:conference) }
+  let(:admin) { FactoryGirl.create(:admin_user) }
+  let(:conference) { FactoryGirl.create(:conference, user_id: user.id) }
 
   context "when authorized" do
     before(:each) do
@@ -15,6 +16,31 @@ describe ParticipantsController do
       it "should redirect to conference path" do
         post :create, participant: FactoryGirl.attributes_for(:participant, :reports_attributes => { "0" => FactoryGirl.attributes_for(:report) })
         response.should redirect_to "http://#{conference.domain}.test.host/"
+      end
+    end
+  end
+
+  context "when admin" do
+    before(:each) do
+      sign_in admin
+      request.expects(:subdomain).returns(conference.domain)
+    end
+
+    context "can moderate conference participants" do
+      before(:each) do
+        FactoryGirl.create(:participant)
+      end
+
+      it "should decline participance requests" do
+        delete :destroy, { id: Participant.last.id }
+        response.status.should be_eql(302)
+        Participant.all.should be_empty
+      end
+
+      it "should approve requests" do
+        put :approve, { id: Participant.last.id }
+        response.status.should be_eql(302)
+        Participant.last.state.should be_eql("approved")
       end
     end
   end

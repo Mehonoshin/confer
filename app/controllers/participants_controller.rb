@@ -17,4 +17,15 @@ class ParticipantsController < BaseProjectController
     current_user.participations.create!(attrs)
     redirect_to conference_site_url(@conference), notice: t('projects.participant.request_send')
   end
+
+  def destroy
+    Participant.find(params[:id]).destroy
+    redirect_to participants_path, notice: t('projects.participants.destroyed')
+  end
+
+  def approve
+    Participant.find(params[:id]).approve!
+    redirect_to participants_path, notice: t('projects.participants.approved')
+    authorize! :moderate, @conference
+  end
 end

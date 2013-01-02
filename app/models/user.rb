@@ -95,8 +95,12 @@ class User < ActiveRecord::Base
     !new_record?
   end
 
-  def admin?
-    service_admin
+  def admin?(conference = nil)
+    if conference.nil?
+      service_admin
+    else
+      !Organizer.where(conference_id: conference.id, user_id: id).first.nil?
+    end
   end
 
   def admin!

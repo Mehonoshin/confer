@@ -66,6 +66,27 @@ describe User do
         subject.city.should be_eql("Воронеж")
       end
     end
-
   end
+
+  context "when owns conference" do
+    subject { FactoryGirl.create(:user) }
+    let(:conference) { FactoryGirl.create(:conference, user_id: subject.id) }
+
+    it "should not be global admin" do
+      subject.admin?.should_not be_true
+    end
+
+    it "should be project admin" do
+      subject.admin?(conference).should be_true
+    end
+  end
+
+  context "when doesnt own conference" do
+    subject { FactoryGirl.create(:user) }
+
+    it "should not be admin" do
+      subject.admin?.should_not be_true
+    end
+  end
+
 end

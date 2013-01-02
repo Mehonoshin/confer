@@ -8,6 +8,9 @@
       %th= t('projects.participants.name')
       %th= t('projects.participants.address')
       %th= t('projects.participants.reports')
+      - if can? :moderate, @conference
+        %th
+        %th
   - @participants.each do |participant|
     %tr
       %td
@@ -17,4 +20,9 @@
       %td
         - participant.reports.each do |report|
           = report.title
+      - if can? :moderate, @conference
+        %td
+          = button_to t('projects.participants.approve'), approve_participant_path(participant), method: :put, class: "btn btn-small btn-success", confirm: t('projects.participants.confirm_approve')
+        %td
+          = button_to t('projects.participants.remove'), participant_path(participant), method: :delete, class: "btn btn-small btn-danger", confirm: t('projects.participants.confirm_remove')
 
