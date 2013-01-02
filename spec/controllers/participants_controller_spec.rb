@@ -3,11 +3,9 @@ require 'spec_helper'
 describe ParticipantsController do
   subject { FactoryGirl.create(:participant) }
   let(:user) { FactoryGirl.create(:user) }
-  let (:conference) { FactoryGirl.create(:conference) }
+  let(:conference) { FactoryGirl.create(:conference) }
 
-  # TODO
-  # how to pass nested attributes to factory
-  context "when authorized", pending: true do
+  context "when authorized" do
     before(:each) do
       sign_in user
       request.expects(:subdomain).returns(conference.domain)
@@ -15,8 +13,8 @@ describe ParticipantsController do
 
     context "creating participation" do
       it "should redirect to conference path" do
-        post :create, participant: FactoryGirl.attributes_for(:participant)
-        response.should redirect_to conference_path(conference)
+        post :create, participant: FactoryGirl.attributes_for(:participant, :reports_attributes => { "0" => FactoryGirl.attributes_for(:report) })
+        response.should redirect_to "http://#{conference.domain}.test.host/"
       end
     end
   end

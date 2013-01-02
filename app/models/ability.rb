@@ -5,6 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     can :read, Conference
+    can :read, Report
 
     if user.admin?
       can :manage, :all
@@ -12,6 +13,8 @@ class Ability
 
     if user.registred?
       can :create, Conference
+      can :create, Participant
+      can :create, Report
     end
 
   end

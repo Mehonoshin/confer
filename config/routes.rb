@@ -5,6 +5,7 @@ Confer::Application.routes.draw do
 
   constraints(Multidomain) do
     resources :participants
+    resources :reports
     get "/" => "projects#index"
   end
 

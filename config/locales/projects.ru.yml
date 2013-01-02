@@ -11,3 +11,9 @@ ru:
         report_title: "Название доклада"
         report_description: "Тезисы доклада"
         show_report: "Заполнить заявку на доклад"
+    reports:
+      index_title: "Доклады"
+      index_desc: "Здесь вы можете видеть список докладов, одобренных организаторами конференции."
+      title: "Название"
+      description: "Тезисы"
+      speaker_name: "Докладчик"
