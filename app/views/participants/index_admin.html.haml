@@ -1,0 +1,50 @@
+.well
+  %h1= t('projects.participants.index_title')
+  %p= t('projects.participants.management')
+
+.b-participants__nav.admin
+  %ul.nav.nav-tabs
+    %li.pending.active
+      - link_title = "#{t('projects.participants.nav.pending')}"
+      - link_title += "(#{@pending_participants.size})" unless @pending_participants.empty?
+      = link_to link_title, "#", class: "pending"
+    %li.approved
+      = link_to t('projects.participants.nav.approved'), "#", class: "approved"
+- unless @pending_participants.empty?
+  %table.table.table-bordered.tablesorter.tablesorter-default.pending
+    %thead
+      %tr
+        %th= t('projects.participants.name')
+        %th= t('projects.participants.address')
+        %th= t('projects.participants.reports')
+        %th
+        %th
+    - @pending_participants.each do |participant|
+      %tr
+        %td
+          %span.label.label-info= t('projects.participants.is_speaker') unless participant.reports.empty?
+          = participant.user.full_name
+        %td= participant.user.address
+        %td
+          - participant.reports.each do |report|
+            = report.title
+        %td
+          = button_to t('projects.participants.approve'), approve_participant_path(participant), method: :put, class: "btn btn-small btn-success", confirm: t('projects.participants.confirm_approve') if participant.new?
+        %td
+          = button_to t('projects.participants.remove'), participant_path(participant), method: :delete, class: "btn btn-small btn-danger", confirm: t('projects.participants.confirm_remove') if participant.new?
+
+%table.table.table-bordered.tablesorter.tablesorter-default.approved.hidden
+  %thead
+    %tr
+      %th= t('projects.participants.name')
+      %th= t('projects.participants.address')
+      %th= t('projects.participants.reports')
+  - @approved_participants.each do |participant|
+    %tr
+      %td
+        %span.label.label-info= t('projects.participants.is_speaker') unless participant.reports.empty?
+        = participant.user.full_name
+      %td= participant.user.address
+      %td
+        - participant.reports.each do |report|
+          = report.title

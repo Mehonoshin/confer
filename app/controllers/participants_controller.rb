@@ -2,7 +2,13 @@ class ParticipantsController < BaseProjectController
   load_and_authorize_resource
 
   def index
-    @participants = @conference.participants
+    @approved_participants = @conference.participants.with_state(:approved)
+    @pending_participants = @conference.participants.with_state(:new)
+    if can? :moderate, @conference
+      render "index_admin"
+    else
+      render "index"
+    end
   end
 
   def new
