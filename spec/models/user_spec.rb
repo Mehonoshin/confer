@@ -69,7 +69,6 @@ describe User do
   end
 
   context "when owns conference" do
-    subject { FactoryGirl.create(:user) }
     let(:conference) { FactoryGirl.create(:conference, user_id: subject.id) }
 
     it "should not be global admin" do
@@ -82,11 +81,27 @@ describe User do
   end
 
   context "when doesnt own conference" do
-    subject { FactoryGirl.create(:user) }
-
     it "should not be admin" do
       subject.admin?.should_not be_true
     end
   end
+
+  context "when participates in conference" do
+    let(:conference) { FactoryGirl.create(:conference) }
+    before { FactoryGirl.create(:participant, user_id: subject.id, conference_id: conference.id) }
+
+    it "should tell that user already participates" do
+      subject.participates?(conference).should be_true
+    end
+  end
+
+  context "when doesnt participate in conference" do
+    let(:conference) { FactoryGirl.create(:conference) }
+
+    it "should tell that user is not participate" do
+      subject.participates?(conference).should be_false
+    end
+  end
+
 
 end
