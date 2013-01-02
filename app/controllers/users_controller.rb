@@ -1,2 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < BaseProjectController
+  def index
+  end
 end

@@ -1,6 +1,10 @@
 class ParticipantsController < BaseProjectController
   load_and_authorize_resource
 
+  def index
+    @participants = @conference.participants
+  end
+
   def new
     @participant = Participant.new
     @participant.reports.build

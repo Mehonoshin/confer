@@ -1,0 +1,20 @@
+.well
+  %h1= t('projects.participants.index_title')
+  %p= t('projects.participants.index_desc')
+
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
+    %tr
+      %th= t('projects.participants.name')
+      %th= t('projects.participants.address')
+      %th= t('projects.participants.reports')
+  - @participants.each do |participant|
+    %tr
+      %td
+        %span.label.label-info= t('projects.participants.is_speaker') unless participant.reports.empty?
+        = participant.user.full_name
+      %td= participant.user.address
+      %td
+        - participant.reports.each do |report|
+          = report.title
+
