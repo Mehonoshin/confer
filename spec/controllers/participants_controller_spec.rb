@@ -20,6 +20,10 @@ describe ParticipantsController do
   end
 
   context "when guest" do
+    before(:each) do
+      request.expects(:subdomain).returns(conference.domain)
+    end
+
     it "should redirect to root url from new participant form" do
       get :new
       response.should redirect_to new_user_session_path
@@ -28,6 +32,11 @@ describe ParticipantsController do
     it "should redirect to root url from create action" do
       post :create, participant: FactoryGirl.attributes_for(:participant)
       response.should redirect_to new_user_session_path
+    end
+
+    it "should display participants list" do
+      get :index
+      response.status.should be_eql(200)
     end
   end
 

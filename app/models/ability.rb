@@ -5,6 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     can :read, Conference
+    can :read, Participant
     can :read, Report
 
     if user.admin?
