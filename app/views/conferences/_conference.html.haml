@@ -5,7 +5,9 @@
   %td
     = conference.guests_limit? ? "#{conference.guests.count} / #{conference.max_guests}" : t('conference.unlimited')
   %td
-    - if conference.registration_open? && !conference.guests_limit_reached?
+    - if signed_in? && current_user.participates?(conference)
+      = t('conference.you_already_participate')
+    - elsif conference.registration_open? && !conference.guests_limit_reached?
       = button_to t('conference.join'), new_participant_url(subdomain: conference.domain), method: :get, class: "btn btn-primary"
     - else
       = t('conference.registration_closed')

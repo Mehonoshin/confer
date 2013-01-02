@@ -118,6 +118,7 @@ ru:
     unlimited: "Неограничено"
     join: "Участвовать"
     registration_closed: "Регистрация закрыта"
+    you_already_participate: "Вы уже подали заявку на участие"
     registration: "Регистрация"
     create_new: "Создать заявку на конференцию"
     form:

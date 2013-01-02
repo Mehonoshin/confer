@@ -11,7 +11,8 @@
   - @approved_participants.each do |participant|
     %tr
       %td
-        %span.label.label-info= t('projects.participants.is_speaker') unless participant.reports.empty?
+        - unless participant.reports.empty?
+          %span.label.label-info= t('projects.participants.is_speaker')
         = participant.user.full_name
       %td= participant.user.address
       %td

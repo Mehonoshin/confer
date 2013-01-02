@@ -91,6 +91,10 @@ class User < ActiveRecord::Base
 
   public
 
+  def participates?(conference)
+    takes_part.include?(conference)
+  end
+
   def registred?
     !new_record?
   end
