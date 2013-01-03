@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://geocode-maps.yandex.ru/1.x/?format=json&geocode=+%2C&key=AE58Uk4BAAAABmRkQgIA1mOl-oVXSbiOdz1CWJoD2Ctd5rEAAAAAAAAAAACsdVyqjM1NwfU9bytvBWvJpLV9BQ%3D%3D&plng=ru
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "YWNjZXNzLWNvbnRyb2wtYWxsb3ctb3JpZ2lu":
+      - !binary |-
+        Kg==
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
+      !binary "ZXhwaXJlcw==":
+      - !binary |-
+        VGh1LCAwMyBKYW4gMjAxMyAyMjozNjo0NSBHTVQ=
+      !binary "dmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Y29udGVudC1lbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Y29udGVudC1sZW5ndGg=":
+      - !binary |-
+        MjAz
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        VGh1LCAwMyBKYW4gMjAxMyAyMjozMTo0NSBHTVQ=
+      !binary "c2VydmVy":
+      - !binary |-
+        bGlnaHR0cGQvMS40LjI2
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA02OTQ+CMAyG/wrZ2RCY2wCPfsST0Xg1HkBqohkrlk1jiP/d
+        znCwl/Ztn7ftKAiGHt0AYjGKLeC+ucPFr9BaTjd0sd2Br9e1rw+EPZB/T+gF
+        W6DjZN9NTJwRPAIMXixEMhMzccXgWhYZ13wtWD+wyqNs4gja5W/lxj3B8oVY
+        W3wBrZAcELPzIs1UqaQpdKJ1quZGqVJWvCD0/T9Xpnmhq0xKk2jDHlNluVTi
+        w8F/QO0D8addE+nTmbtf6xDdKAABAAA=
+    http_version: !binary |-
+      MS4x
+  recorded_at: Thu, 03 Jan 2013 22:31:45 GMT
+recorded_with: VCR 2.3.0

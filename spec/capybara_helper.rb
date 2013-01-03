@@ -3,7 +3,7 @@ def base_app_url
 end
 
 def snap(page, file)
-  page.driver.render(file)
+  page.driver.render("#{file}-#{Time.now.to_i}.png")
 end
 
 def sign_in(user)

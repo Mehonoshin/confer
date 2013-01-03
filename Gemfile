@@ -48,6 +48,8 @@ group :production do
 end
 
 group :test, :development do
+  gem "vcr"
+  gem "fakeweb"
   gem "timecop"
   gem "letter_opener"
   gem 'guard'

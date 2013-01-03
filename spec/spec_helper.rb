@@ -6,12 +6,20 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'vcr'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 Capybara.javascript_driver = :poltergeist
+Capybara.app_host = 'http://confer.dev'
+
+VCR.configure do |c|
+  c.allow_http_connections_when_no_cassette = true
+  c.cassette_library_dir = Rails.root.join("spec", "vcr")
+  c.hook_into :fakeweb
+end
 
 RSpec.configure do |config|
   # == Mock Framework

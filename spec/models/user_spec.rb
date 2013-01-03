@@ -40,7 +40,11 @@ describe User do
   end
 
   context "when address is specified" do
-    subject { FactoryGirl.create(:user, address: "Russia, Voronezh") }
+    subject do
+      VCR.use_cassette("user/creating_voronezh_user") do
+        FactoryGirl.create(:user, address: "Russia, Voronezh")
+      end
+    end
 
     it "should save city and country" do
       subject.country.should be_eql("Россия")
@@ -48,22 +52,28 @@ describe User do
     end
 
     it "should change city" do
-      subject.update_attributes(address: "Россия, Москва")
-      subject.country.should be_eql("Россия")
-      subject.city.should be_eql("Москва")
+      VCR.use_cassette("user/update_address_to_moscow") do
+        subject.update_attributes(address: "Россия, Москва")
+        subject.country.should be_eql("Россия")
+        subject.city.should be_eql("Москва")
+      end
     end
 
     context "when address is empty" do
       it "should not change city and country" do
-        subject.update_attributes(address: "")
-        subject.country.should be_eql("Россия")
-        subject.city.should be_eql("Воронеж")
+        VCR.use_cassette("user/request_empty_address") do
+          subject.update_attributes(address: "")
+          subject.country.should be_eql("Россия")
+          subject.city.should be_eql("Воронеж")
+        end
       end
 
       it "should not change city and country" do
-        subject.update_attributes(address: " ,")
-        subject.country.should be_eql("Россия")
-        subject.city.should be_eql("Воронеж")
+        VCR.use_cassette("user/request_invalid_address") do
+          subject.update_attributes(address: " ,")
+          subject.country.should be_eql("Россия")
+          subject.city.should be_eql("Воронеж")
+        end
       end
     end
   end

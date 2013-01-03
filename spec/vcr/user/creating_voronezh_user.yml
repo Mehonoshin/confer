@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://geocode-maps.yandex.ru/1.x/?format=json&geocode=Russia%2C+Voronezh&key=AE58Uk4BAAAABmRkQgIA1mOl-oVXSbiOdz1CWJoD2Ctd5rEAAAAAAAAAAACsdVyqjM1NwfU9bytvBWvJpLV9BQ%3D%3D&plng=ru
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "YWNjZXNzLWNvbnRyb2wtYWxsb3ctb3JpZ2lu":
+      - !binary |-
+        Kg==
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
+      !binary "ZXhwaXJlcw==":
+      - !binary |-
+        VGh1LCAwMyBKYW4gMjAxMyAyMjozNDo1MyBHTVQ=
+      !binary "dmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "Y29udGVudC1lbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        VGh1LCAwMyBKYW4gMjAxMyAyMjoyOTo1MyBHTVQ=
+      !binary "c2VydmVy":
+      - !binary |-
+        bGlnaHR0cGQvMS40LjI2
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA+2aTW8bRRjHv4q1Z2PN+8zmVlLEpUBUBBfEwbEHZcHeNbvr
+        QqkikVYVl4pWvcABxMuJYwlKlSYlfIX1N+KZ2TUk8b6MXduNq0SyvC//feZ5
+        /jO/nR1v7nmxTkZRmGhv6573ro4+2P1c99LtaDCAryAKzeGhTrs3u2l3J45G
+        Ok7vFtJe1Nfx7eLy9wqNORfrL8c6Sb0t7/Y4SYJuu/VxFEeh/mbPa3ufReOw
+        D6cIhR1ofDxIE9jFyNvfh7O6m45jiDbc1bG39cm5nJoyOZ/BF4FtYxD1uoMA
+        ZG0v1V+bhLJfs7PJweQgO548breyp7D3bXaW/Z0dZc/h6En2bPK4BQf+zE5h
+        82Byf/LosgyCjWLdCxLrjhele5Bp27vR70M1yU3IIhgkJoltqDSNbY7FyVtB
+        qE0SCzZbBHy/O9TbULHx96OLhy9VaNMaBmGQpHE3De7oG7Hu5vlcPjq92iU1
+        CHtr6iwEm26XhoBeNX9tr6+TXhyM8jHl1g5YcLGYsLSFtrdrxpTuv23TeSe8
+        owcwPMz2IPpKx9tRHJrB5FG/gzAlzG9x3GGKSSng4vFodFEjuOJYGY2PiCJ2
+        XO5EQWhH4ChKchVBDPnCqISAkMIU2l7xcH2SnU7uZ8+yF9aw4+xFKzsBI+AA
+        nPwhewl2HIMpZ9lfxqD/RLnE+AWyf0xEEJ7C/snyh/YaUlwHBtVlQLAPx7vl
+        8UpPTEO6FN9AVq0x+xWkubTbNLbKMWzoJ0cqFekgxLg0KGHFCSYzUBoJFogR
+        oyGIYkrLqLQyOItsKJ9huRYqf8wOwSZj72H1jeyPyYNz1s4z3F+VyBWntw4a
+        m0tYmMqqwldBYo3JzRWumEIGMyJTMKm1uOj4jCLMZzA0Gs6JT3KNwlyUYWhl
+        WLIiFOdKrQPD38HAl+BYrYW/mXuc8WfyPdwIH4FHh46j/gj0D8FVe2dcNqOv
+        M/d1ANxc38IAu7kyL841jlXR7ZaI60B1ZL22Z13RRx2JFGe4xWmH+FISPIs+
+        aAjimBsNRURyVYo+yDDjhOYyRKi/8ej/DIrnGwl+bebX2M/gVOPXFYK+tlfn
+        QB5w5gXyygecy5CnhBORsywZLl0K21CCU5bLKL5Ks7117v+nqiZgfoGvU+hF
+        c8Vrg325OW865rVuzId3rVOVgDd1R3PxrmA39KQ72j5D0pKNieJ0djltJByg
+        tWRjBhM2qyAbHvJ9ZcnGlPk+eyPJbpG37M86G4f3NPFrxuew64qDPu1TV9px
+        B6ZcwaSdfYUvMJvF3WgEQfaWQOHp3j6Uly3bEaU+UbkMKSnfTNzxpuKOr3Gf
+        266rjjueG3dCCPdz3GGzZKluNLJYzlOFsORVuBPmI5TjjrG/jKX63t1+HFWy
+        7vzSz1gPstKege0jc+Xyn89XnN46uHUpYWFy6wq/xO1OrIdB/k8FxWYRpMqe
+        /SpQ6912KrgK1OqucsTRvAZWmCL7GlgRQUXpC2UquTA/mpMOEoCmrHijTIFZ
+        syLHHR9LRpYx+9bj6HSL+wnE300egD3Hc4/4VwVy5QmuA8nmIhYGsqn0lUHZ
+        1LDr4FoNlrBwRZQpKQxyijJCZ7EEDcPE/J5NADeucCmVoMJKCCptJAlYWio/
+        hc+/cOBiRTolAAA=
+    http_version: !binary |-
+      MS4x
+  recorded_at: Thu, 03 Jan 2013 22:29:53 GMT
+recorded_with: VCR 2.3.0

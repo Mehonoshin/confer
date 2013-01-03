@@ -2,17 +2,16 @@ require 'spec_helper'
 require 'capybara_helper'
 
 feature "participanse in conferences" do
-  subject { FactoryGirl.create(:conference, user_id: user.id, state: "approved") }
   let(:user) { FactoryGirl.create(:user) }
-  before(:each) { subject }
 
-  scenario "should be possible only once", js: true do
+  scenario "should be possible only once" do
+    FactoryGirl.create(:conference, user_id: user.id, state: "approved")
     sign_in(user)
     visit("/conferences")
     click_button(I18n.t('conference.join'))
+    click_button(I18n.t('projects.participant.form.take_part'))
     visit("/conferences")
-    page.driver.render('file.png')
-    page.should_not have_content(I18n.t('conference.join'))
+    page.should have_content(I18n.t('conference.you_already_participate'))
   end
 
   scenario "should open service site" do

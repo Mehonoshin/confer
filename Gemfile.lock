@@ -79,6 +79,7 @@ GEM
     factory_girl_rails (4.1.0)
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
+    fakeweb (1.3.0)
     faye-websocket (0.4.6)
       eventmachine (>= 0.12.0)
     ffi (1.2.0)
@@ -266,6 +267,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     ultimate-log-silencer (0.2.1)
       rails (~> 3.1)
+    vcr (2.3.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
     warden (1.2.1)
@@ -293,6 +295,7 @@ DEPENDENCIES
   devise
   devise-russian
   factory_girl_rails
+  fakeweb
   formtastic
   formtastic-bootstrap
   geocoder
@@ -328,4 +331,5 @@ DEPENDENCIES
   timecop
   uglifier (>= 1.0.3)
   ultimate-log-silencer
+  vcr
   whenever
