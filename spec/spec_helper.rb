@@ -11,7 +11,6 @@ require 'capybara/poltergeist'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-Capybara.server_port = 8097
 Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
