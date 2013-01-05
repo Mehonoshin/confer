@@ -10,7 +10,7 @@
   - @conferences.each do |conf|
     %li.span4
       .thumbnail
-        = image_tag "conf1.jpg"
+        = image_tag (conf.logo.url(:thumb) || "conf1.jpg")
         .caption
           = conference_site_link(conf) do
             %h3= conf.name

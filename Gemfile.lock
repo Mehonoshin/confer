@@ -72,6 +72,7 @@ GEM
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.0)
+    excon (0.13.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.1.0)
@@ -83,6 +84,17 @@ GEM
     faye-websocket (0.4.6)
       eventmachine (>= 0.12.0)
     ffi (1.2.0)
+    fog (1.3.1)
+      builder
+      excon (~> 0.13.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.4)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     formtastic-bootstrap (2.0.0)
@@ -143,9 +155,13 @@ GEM
     metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.19)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
     mocha (0.13.1)
       metaclass (~> 0.0.1)
     multi_json (1.5.0)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
     net-ssh (2.6.2)
     newrelic_rpm (3.5.3.25)
     nokogiri (1.5.6)
@@ -224,6 +240,7 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    ruby-hmac (0.4.0)
     rubyzip (0.9.9)
     sass (3.2.3)
     sass-rails (3.2.5)
@@ -251,6 +268,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     state_machine (1.1.2)
+    subexec (0.2.2)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -296,6 +314,7 @@ DEPENDENCIES
   devise-russian
   factory_girl_rails
   fakeweb
+  fog (~> 1.3.1)
   formtastic
   formtastic-bootstrap
   geocoder
@@ -312,6 +331,7 @@ DEPENDENCIES
   launchy
   letter_opener
   meta_request (= 0.2.0)
+  mini_magick
   mocha
   newrelic_rpm
   pg

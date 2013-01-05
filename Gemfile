@@ -12,6 +12,9 @@ gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem "carrierwave"
 gem "geocoder"
+gem "mini_magick"
+gem 'carrierwave'
+gem "fog", "~> 1.3.1"
 
 gem 'ratchetio', '>= 0.4.0'
 gem 'whenever', :require => false

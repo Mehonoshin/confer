@@ -1,6 +1,7 @@
 .well
   = semantic_form_for @conference do |f|
     = f.inputs do
+      = f.input :logo, label: t('conference.form.logo')
       = f.input :name, label: t('conference.form.name')
       = f.input :domain, label: t('conference.form.domain'), hint: t('conference.form.hints.domain')
       = f.input :start_date, as: :string, input_html: { class: "datepicker" }, label: t('conference.form.start_date')

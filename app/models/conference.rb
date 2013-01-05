@@ -17,7 +17,7 @@
 
 class Conference < ActiveRecord::Base
   ## included modules & attr_*
-  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description
+  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo
   attr_accessor :user_id
 
   ## associations
@@ -30,6 +30,8 @@ class Conference < ActiveRecord::Base
   has_many :reports, dependent: :destroy
 
   ## plugins
+  mount_uploader :logo, LogoUploader
+
   state_machine :initial => :pending do
     event :approve do
       transition :pending => :approved
