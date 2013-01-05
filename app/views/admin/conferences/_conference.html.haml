@@ -7,5 +7,11 @@
   %td= human_date_with_time(conference.registrable_until)
   %td= conference.max_guests
   %td
-    = button_to t('admin.conferences.approve'), approve_admin_conference_path(conference), method: :put, class: "btn btn-success btn-small", confirm: t("admin.conferences.confirm.approve") unless conference.approved?
-  %td= button_to t('admin.conferences.remove'), admin_conference_path(conference), method: :delete, class: "btn btn-danger btn-small", confirm: t("admin.conferences.confirm.remove")
+    - unless conference.approved?
+      = link_to approve_admin_conference_path(conference), method: :put, confirm: t("admin.conferences.confirm.approve") do
+        %i.icon-ok
+    = link_to edit_admin_conference_path(conference) do
+      %i.icon-edit
+    = link_to admin_conference_path(conference), method: :delete, confirm: t("admin.conferences.confirm.remove") do
+      %i.icon-remove
+
