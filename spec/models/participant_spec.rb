@@ -22,6 +22,22 @@ describe Participant do
     it "should not be valid without conference_id" do
       subject.errors[:conference_id].should_not be_empty
     end
-
   end
+
+  context "when has report" do
+    subject { FactoryGirl.create(:participant) }
+    let(:report) { FactoryGirl.create(:report, participant_id: subject.id) }
+
+    it "should have unapproved states" do
+      subject.new?.should be_true
+      report.pending?.should be_true
+    end
+
+    it "should approve user after report approval" do
+      report.approve!
+      report.approved?.should be_true
+      report.participant.approved?.should be_true
+    end
+  end
+
 end

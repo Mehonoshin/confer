@@ -9,6 +9,7 @@
 #  description    :text
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  state          :string(255)      default("pending")
 #
 
 class Report < ActiveRecord::Base
@@ -25,7 +26,7 @@ class Report < ActiveRecord::Base
       transition :pending => :approved
     end
 
-    #after_transition :pending => :approved, :do => :notify_creator
+    after_transition :pending => :approved, :do => :approve_creator
   end
 
   ## callbacks
@@ -44,4 +45,8 @@ class Report < ActiveRecord::Base
   protected
 
   private
+
+    def approve_creator
+      participant.approve! if participant.new?
+    end
 end
