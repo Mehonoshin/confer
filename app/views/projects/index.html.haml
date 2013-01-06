@@ -1,2 +1,6 @@
-%h1
-  Confer
+.hero-unit
+  %h1= "#{request.host}"
+  %p= @conference.description
+  - if !signed_in? || (signed_in? && !@conference.has_guest?(current_user))
+    %p= link_to t('conference.join'), new_participant_path, class: "btn btn-primary btn-large"
+  = image_tag @conference.logo.url, class: "conf-logo"

@@ -1,0 +1,36 @@
+.well
+  %h1= t('projects.reports.index_title')
+  %p= t('projects.reports.index_desc')
+
+.b-reports__nav.admin
+  %ul.nav.nav-tabs
+    %li.approved.active
+      = link_to t('projects.reports.nav.approved'), "#", class: "approved"
+    %li.pending
+      - link_title = "#{t('projects.reports.nav.pending')}"
+      - link_title += "(#{@pending_reports_count})" unless @pending_reports_count.zero?
+      = link_to link_title, "#", class: "pending"
+
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
+    %tr
+      %th= t('projects.reports.title')
+      %th= t('projects.reports.description')
+      %th= t('projects.reports.speaker_name')
+      %th
+  - @reports.each do |report|
+    %tr{ class: "#{report.pending? ? 'pending hidden' : 'approved'}" }
+      %td= report.title
+      %td= report.description
+      %td= link_to report.participant.user.full_name, user_path(report.participant.user) if report.participant.user.full_name
+      %td
+        - unless report.approved?
+          = link_to approve_report_path(report), method: :put, confirm: t("projects.reports.confirm.approve") do
+            %i.icon-ok
+        = link_to edit_report_path(report) do
+          %i.icon-edit
+        = link_to report_path(report), method: :delete, confirm: t("projects.reports.confirm.remove") do
+          %i.icon-remove
+
+
+

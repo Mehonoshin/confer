@@ -27,6 +27,7 @@
               = render 'layouts/projects/messages'
               = yield
           %footer
-            = t("projects.copyright")
-            = link_to service_url, url_for(host: service_url, controller: "main", action: "index")
+            %h6
+              = t("projects.copyright")
+              = link_to service_url, url_for(host: service_url, controller: "main", action: "index")
 

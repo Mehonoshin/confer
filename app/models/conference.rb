@@ -13,6 +13,8 @@
 #  registrable_until :datetime
 #  state             :string(255)
 #  description       :text
+#  logo              :string(255)
+#  theme             :string(255)
 #
 
 class Conference < ActiveRecord::Base
@@ -63,6 +65,10 @@ class Conference < ActiveRecord::Base
   ## class methods
 
   public
+
+  def has_guest?(user)
+    !participants.where(user_id: user.id).empty?
+  end
 
   def registration_open?
     if registrable_until

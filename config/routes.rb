@@ -9,7 +9,11 @@ Confer::Application.routes.draw do
         put :approve
       end
     end
-    resources :reports
+    resources :reports do
+      member do
+        put :approve
+      end
+    end
     get "/" => "projects#index"
   end
 
