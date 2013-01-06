@@ -3,6 +3,7 @@
     = f.inputs do
       = image_tag @conference.logo.url(:thumb) if @conference.logo?
       = f.input :logo, label: t('conference.form.logo')
+      = f.input :theme, label: t('conference.form.theme'), as: :select, collection: Conference::THEMES.map { |theme| theme.split(".")[0] }
       = f.input :name, label: t('conference.form.name')
       = f.input :domain, label: t('conference.form.domain'), hint: t('conference.form.hints.domain')
       = f.input :start_date, as: :string, input_html: { class: "datepicker" }, label: t('conference.form.start_date')

@@ -16,8 +16,10 @@
 #
 
 class Conference < ActiveRecord::Base
+  THEMES = ["amelia.min", "cerulean.min", "cosmo.min", "cyborg.min", "journal.min", "readable.min", "salate.min", "simplex.min", "spruce.min", "superhero.min", "united.min"]
+
   ## included modules & attr_*
-  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo
+  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo, :theme
   attr_accessor :user_id
 
   ## associations
