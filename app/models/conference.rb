@@ -47,6 +47,7 @@ class Conference < ActiveRecord::Base
 
   ## callbacks
   after_create :add_owner
+  after_create :force_domain_to_downcase
 
   ## validations
   validates :name, presence: true
@@ -89,6 +90,11 @@ class Conference < ActiveRecord::Base
 
   protected
   private
+
+    def force_domain_to_downcase
+      self.domain = domain.downcase
+      save
+    end
 
     def notify_creator
       ConferenceMailer.conference_approved(self, organizers.first).deliver

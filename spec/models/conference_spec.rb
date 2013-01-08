@@ -72,6 +72,11 @@ describe Conference do
       conf.valid?
       conf.errors[:registrable_until].should_not be_empty
     end
+
+    it "should force domain name to downcase" do
+      conf = FactoryGirl.create(:conference, domain: "WA2013")
+      conf.domain.should be_eql("wa2013")
+    end
   end
 
   context "adding participants" do

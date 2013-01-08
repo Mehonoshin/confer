@@ -1,7 +1,8 @@
 class BaseProjectController < ApplicationController
   layout "project"
 
-  before_filter :preload_project, :preload_participant
+  before_filter :preload_project
+  before_filter :preload_participant
   helper_method :service_url, :conference_site_url
 
   private
