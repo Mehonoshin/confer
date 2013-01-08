@@ -18,6 +18,7 @@ class Participant < ActiveRecord::Base
   belongs_to :user
   belongs_to :conference
   has_many :reports, dependent: :destroy
+  has_many :news_articles, dependent: :destroy
   accepts_nested_attributes_for :reports, :reject_if => proc { |attributes| attributes['description'].blank? || attributes["title"].blank? }
 
   ## plugins

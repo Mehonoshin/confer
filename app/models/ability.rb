@@ -7,6 +7,7 @@ class Ability
     can :read, Conference
     can :read, Participant
     can :read, Report
+    can :read, NewsArticle
 
     if user.admin?
       can :manage, :all

@@ -1,0 +1,6 @@
+= semantic_form_for @news_article do |f|
+  = f.inputs do
+    = f.input :title, label: t('projects.news.title')
+    = f.input :body, label: t('projects.news.body')
+  = f.actions do
+    = f.action :submit, button_html: { class: "btn btn-success" }, label: t('projects.news.submit')

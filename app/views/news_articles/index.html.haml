@@ -1,0 +1,16 @@
+%h2= t('projects.news.index_title')
+
+- if can? :moderate, @conference
+  = button_to t('projects.news.add'), new_news_article_path, method: :get, class: "btn btn-primary"
+
+- @news_articles.each do |article|
+  .well
+    %h3
+      = link_to article.title, news_article_path(article)
+    .controls
+      = link_to edit_news_article_path(article) do
+        %i.icon-edit
+      = link_to news_article_path(article), method: :delete, confirm: t('projects.news.confirms.destroy') do
+        %i.icon-remove
+
+    %p= article.body

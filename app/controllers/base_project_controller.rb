@@ -1,7 +1,7 @@
 class BaseProjectController < ApplicationController
   layout "project"
 
-  before_filter :preload_project
+  before_filter :preload_project, :preload_participant
   helper_method :service_url, :conference_site_url
 
   private
@@ -12,6 +12,10 @@ class BaseProjectController < ApplicationController
 
     def preload_project
       @conference = Conference.find_by_domain(request.subdomain)
+    end
+
+    def preload_participant
+      @current_participant = @conference.participants.where(user_id: current_user.id).last if signed_in?
     end
 
     def service_url

@@ -14,6 +14,7 @@ Confer::Application.routes.draw do
         put :approve
       end
     end
+    resources :news_articles, path: "news"
     get "/" => "projects#index"
   end
 

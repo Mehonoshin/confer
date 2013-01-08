@@ -32,6 +32,7 @@ class Conference < ActiveRecord::Base
   has_many :stuff, through: :organizers, source: :user
 
   has_many :reports, dependent: :destroy
+  has_many :news_articles, dependent: :destroy
 
   ## plugins
   mount_uploader :logo, LogoUploader
