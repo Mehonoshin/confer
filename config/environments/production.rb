@@ -46,7 +46,7 @@ Confer::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-   config.assets.precompile += %w( amelia.min.css cosmo.min.css journal.min.css salate.min.css spruce.min.css united.min.css cerulean.min.css cyborg.min.css readable.min.css simplex.min.css superhero.min.css )
+   config.assets.precompile += %w( themes/amelia.min.css themes/cosmo.min.css themes/journal.min.css themes/salate.min.css themes/spruce.min.css themes/united.min.css themes/cerulean.min.css themes/cyborg.min.css themes/readable.min.css themes/simplex.min.css themes/superhero.min.css )
 
   # Disable delivery errors, bad email addresses will be ignored
    config.action_mailer.raise_delivery_errors = true
