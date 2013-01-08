@@ -10,6 +10,8 @@
     - if @conference.theme?
       = stylesheet_link_tag "themes/#{@conference.theme}.min", :media => "all"
     = javascript_include_tag "application"
+    = auto_discovery_link_tag :atom, "/feed"
+    = auto_discovery_link_tag :rss, "/feed.rss"
     = csrf_meta_tags
     = yield(:head)
 

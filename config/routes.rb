@@ -15,6 +15,9 @@ Confer::Application.routes.draw do
       end
     end
     resources :news_articles, path: "news"
+    match '/feed' => 'news_items#feed',
+      as: :feed,
+      defaults: { format: 'atom' }
     get "/" => "projects#index"
   end
 

@@ -1,5 +1,9 @@
-%h2= t('projects.news.index_title')
-
+%table
+  %tr
+    %td
+      %h2= t('projects.news.index_title')
+    %td
+      = link_to image_tag("rss_small.png"), news_articles_path(format: :rss)
 - if can? :moderate, @conference
   = button_to t('projects.news.add'), new_news_article_path, method: :get, class: "btn btn-primary"
 
