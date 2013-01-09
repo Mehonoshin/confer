@@ -15,6 +15,7 @@ gem "geocoder"
 gem "mini_magick"
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
+gem "audited-activerecord", "~> 3.0"
 
 gem 'ratchetio', '>= 0.4.0'
 gem 'whenever', :require => false

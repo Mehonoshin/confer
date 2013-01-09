@@ -22,9 +22,9 @@ class Conference < ActiveRecord::Base
 
   ## included modules & attr_*
   attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo, :theme
-  attr_accessor :user_id
 
   ## associations
+  belongs_to :user
   has_many :participants
   has_many :guests, through: :participants, source: :user
 
@@ -35,6 +35,7 @@ class Conference < ActiveRecord::Base
   has_many :news_articles, dependent: :destroy
 
   ## plugins
+  audited associated_with: :user
   mount_uploader :logo, LogoUploader
 
   state_machine :initial => :pending do
@@ -53,7 +54,7 @@ class Conference < ActiveRecord::Base
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :user_id, presence: true, on: :create
+  validates :user_id, presence: true
   validates :domain, presence: true, uniqueness: true, format: { with: /^[a-zA-Z0-9-]*$/ }
   validate :end_date_greater_than_start_date
   validate :registration_date_less_than_end_date

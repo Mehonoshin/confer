@@ -79,6 +79,8 @@ class User < ActiveRecord::Base
   has_many :organized, through: :organizer_roles, source: :conference, dependent: :destroy
 
   ## plugins
+  audited
+  has_associated_audits
 
   ## callbacks
   before_save :geocode, if: "address.present?"
@@ -86,6 +88,7 @@ class User < ActiveRecord::Base
   ## validations
 
   ## named_scopes
+  scope :admins, where(service_admin: true)
 
   ## class methods
 
