@@ -15,6 +15,7 @@
 #  description       :text
 #  logo              :string(255)
 #  theme             :string(255)
+#  user_id           :integer
 #
 
 class Conference < ActiveRecord::Base
