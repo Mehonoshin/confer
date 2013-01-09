@@ -7,6 +7,7 @@ ru:
     sign_up: "Регистрация"
     admin: "Администрирование"
     users: "Пользователи"
+    logs: "Логи"
   main:
     about: "Сервис для создания веб-сайтов научных конфереций"
     learn_more: "Подробнее"
@@ -78,6 +79,23 @@ ru:
         all: "Все"
         approved: "Одобренные"
         pending: "Заявки"
+    logs:
+      title: "Журнал активности"
+      model: "Обьект"
+      action: "Действие"
+      date: "Дата"
+      ip_address: "IP"
+      actor: "Выполнил"
+      nav:
+        user: "Пользователи"
+        conference: "Конференции"
+      actions:
+        update: "Обновлен"
+        create: "Создан"
+        destroy: "Удален"
+      types:
+        conference: "Конференция"
+        user: "Пользователь"
   auth:
     email: "Электронная почта"
     password: "Пароль"

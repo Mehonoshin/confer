@@ -23,6 +23,7 @@ Confer::Application.routes.draw do
 
   namespace :admin do
     resources :users do
+      resources :logs, only: [:index]
       member do
         put :make_admin
         put :make_user
@@ -30,10 +31,12 @@ Confer::Application.routes.draw do
       end
     end
     resources :conferences do
+      resources :logs, only: [:index]
       member do
         put :approve
       end
     end
+    get "logs" => "logs#index", as: :logs
   end
 
   resources :users

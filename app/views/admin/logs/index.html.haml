@@ -1,0 +1,32 @@
+%h3= t('admin.logs.title')
+
+%ul.nav.nav-tabs
+  %li{class: "#{@type == 'user' ? 'active' : ''}"}
+    = link_to t("admin.logs.nav.user"), admin_logs_path(type: "user")
+  %li{class: "#{@type == 'conference' ? 'active' : ''}"}
+    = link_to t("admin.logs.nav.conference"), admin_logs_path(type: "conference")
+
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
+    %tr
+      %th
+        ID
+      %th= t('admin.logs.model')
+      %th= t('admin.logs.action')
+      %th= t('admin.logs.actor')
+      %th= t('admin.logs.date')
+      %th= t('admin.logs.ip_address')
+  %tbody
+    - @audits.each do |audit|
+      %tr
+        %td= audit.id
+        %td
+          - if audit.auditable.present?
+            = link_to auditable_name(audit), url_for([:admin, audit.auditable])
+          - else
+            = t("admin.logs.types.#{audit.auditable_type.downcase}")
+        %td= t("admin.logs.actions.#{audit.action}")
+        %td
+          = link_to audit.user.email, admin_user_path(audit.user) if audit.user.present?
+        %td= human_date_with_time(audit.created_at)
+        %td= audit.remote_address
