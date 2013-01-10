@@ -10,7 +10,7 @@
   %tbody
     - @users.each do |user|
       %tr
-        %td= user.email
+        %td= link_to user.email, admin_user_path(user)
         %td= human_date_with_time(user.created_at)
         %td
           - if user.admin?

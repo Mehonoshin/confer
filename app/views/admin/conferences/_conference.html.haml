@@ -1,6 +1,6 @@
 %tr{ class: "#{conference.approved? ? 'approved' : 'pending' }" }
-  %td= conference.name
-  %td= conference.domain
+  %td= link_to conference.name, admin_conference_path(conference)
+  %td= project_link(conference.domain)
   %td= conference.description
   %td= human_date_with_time(conference.start_date)
   %td= human_date_with_time(conference.end_date)

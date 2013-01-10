@@ -14,10 +14,17 @@ describe Admin::UsersController do
   context "when user is admin" do
     before(:each) do
       sign_in admin
+      admin.update_attributes(full_name: "Full name")
     end
 
     it "should render page" do
       get :index
+      response.status.should be_eql(200)
+    end
+
+    it "should render user activity page" do
+      get :show, { id: admin.id }
+      response.should render_template("show")
       response.status.should be_eql(200)
     end
 

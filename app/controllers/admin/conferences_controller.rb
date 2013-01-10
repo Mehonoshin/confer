@@ -3,6 +3,11 @@ class Admin::ConferencesController < Admin::BaseController
     @conferences = Conference.order("start_date DESC")
   end
 
+  def show
+    @conference = Conference.find(params[:id])
+    @audits = @conference.audits
+  end
+
   def approve
     @conference = Conference.find(params[:id])
     @conference.approve!

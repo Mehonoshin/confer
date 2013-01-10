@@ -1,0 +1,15 @@
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
+    %tr
+      %th
+        ID
+      %th= t('admin.logs.action')
+      %th= t('admin.logs.date')
+      %th= t('admin.logs.ip_address')
+  %tbody
+    - @audits.each do |audit|
+      %tr
+        %td= audit.id
+        %td= audit_action(audit)
+        %td= human_date_with_time(audit.created_at)
+        %td= audit.remote_address

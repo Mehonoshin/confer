@@ -3,10 +3,17 @@ require 'spec_helper'
 describe Admin::ConferencesController do
 
   context "when authorized user" do
+    let(:conference) { FactoryGirl.create(:conference) }
     before { sign_in FactoryGirl.create(:admin_user) }
 
     it "should display index page" do
       get :index
+      response.status.should be_eql(200)
+    end
+
+    it "should render conference activity page" do
+      get :show, { id: conference.id }
+      response.should render_template("show")
       response.status.should be_eql(200)
     end
 

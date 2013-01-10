@@ -57,8 +57,8 @@ describe LogsHelper do
 
       it "should return admin user link" do
         audit = user.audits.last
-        audit_actor(audit).should include("<a")
-        audit_actor(audit).should include(user.email)
+        helper.audit_actor(audit).should include("<a")
+        helper.audit_actor(audit).should include(user.email)
       end
     end
 

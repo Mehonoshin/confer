@@ -5,6 +5,11 @@ class Admin::UsersController < Admin::BaseController
     @users = User.order("id ASC").page(params[:page])
   end
 
+  def show
+    @user = User.find(params[:id])
+    @audits = @user.audits
+  end
+
   def destroy
     @user.destroy
     redirect_to admin_users_path, notice: t('admin.users.notices.removed')
