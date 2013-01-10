@@ -95,6 +95,13 @@ ru:
         update: "Обновлен"
         create: "Создан"
         destroy: "Удален"
+        user:
+          sign_in: "Вошел в систему"
+          profile_updated: "Обновлен профиль"
+          confirmed: "Подтвержден"
+          made_admin: "Изменен статус администратора"
+        conference:
+          state_changed: "Изменен статус"
       types:
         conference: "Конференция"
         user: "Пользователь"

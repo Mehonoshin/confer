@@ -1,4 +1,11 @@
 module LogsHelper
+  AUDIT_ACTIONS = {
+    "last_sign_in_at" => "sign_in",
+    "phone" => "profile_updated",
+    "confirmation_token" => "confirmed",
+    "service_admin" => "made_admin",
+    "state" => "state_changed"
+  }
   def auditable_name(audit)
     if audit.auditable.present?
       link_to auditable_title(audit.auditable), url_for([:admin, audit.auditable])
@@ -20,7 +27,12 @@ module LogsHelper
   end
 
   def audit_action(audit)
-    t("admin.logs.actions.#{audit.action}")
+    action = audit.audited_changes.first[0]
+    if AUDIT_ACTIONS[action].present?
+      t("admin.logs.actions.#{audit.auditable_type.downcase}.#{AUDIT_ACTIONS[action]}")
+    else
+      t("admin.logs.actions.#{audit.action}")
+    end
   end
 
 end
