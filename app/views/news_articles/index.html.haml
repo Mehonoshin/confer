@@ -17,4 +17,4 @@
       = link_to news_article_path(article), method: :delete, confirm: t('projects.news.confirms.destroy') do
         %i.icon-remove
 
-    %p= article.body
+    %p= simple_format article.body
