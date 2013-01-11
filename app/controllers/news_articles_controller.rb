@@ -4,7 +4,7 @@ class NewsArticlesController < BaseProjectController
 
   def index
     @news_articles = NewsArticle.where(conference_id: @conference.id)
-    @title = "Feed title"
+    @title = "#{@conference.name}"
     @updated = @news_articles.first.updated_at unless @news_articles.empty?
 
     respond_to do |format|
