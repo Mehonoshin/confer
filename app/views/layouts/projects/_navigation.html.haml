@@ -7,17 +7,17 @@
         %li= link_to t('projects.menu.newsletters'), "#"
         %li= link_to t('projects.menu.settings'), "#"
 
-  %li
+  %li{ class: params[:controller] == "news_articles" ? "active" : "" }
     = link_to t('projects.menu.news'), news_articles_path
 
-  %li
+  %li{ class: params[:controller] == "reports" ? "active" : "" }
     = link_to t('projects.menu.topics'), reports_path
 
-  %li
+  %li{ class: params[:controller] == "participants" ? "active" : "" }
     = link_to t('projects.menu.participants'), participants_path
 
   - if user_signed_in?
-    %li
+    %li{ class: params[:controller] == "users" ? "active" : "" }
       = link_to(t('menu.account'), edit_user_registration_path)
 
   - if user_signed_in?
@@ -25,9 +25,9 @@
       = link_to(t('menu.sign_out'), destroy_user_session_path, method: 'delete')
 
   - unless user_signed_in?
-    %li
+    %li{ class: params[:controller] == "sessions" ? "active" : "" }
       = link_to(t('menu.sign_in'), new_user_session_path)
 
   - unless user_signed_in?
-    %li
+    %li{ class: params[:controller] == "registrations" ? "active" : "" }
       = link_to(t('menu.sign_up'), new_user_registration_path)
