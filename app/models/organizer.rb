@@ -18,6 +18,7 @@ class Organizer < ActiveRecord::Base
   ## associations
   belongs_to :user
   belongs_to :conference
+  has_many :news_articles, dependent: :destroy
 
   ## plugins
 

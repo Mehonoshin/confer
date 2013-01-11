@@ -5,6 +5,6 @@ FactoryGirl.define do
     title "MyString"
     body "MyText"
     conference_id 1
-    participant_id 999
+    organizer_id 999
   end
 end

@@ -2,21 +2,21 @@
 #
 # Table name: news_articles
 #
-#  id             :integer          not null, primary key
-#  title          :string(255)
-#  body           :text
-#  conference_id  :integer
-#  participant_id :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id            :integer          not null, primary key
+#  title         :string(255)
+#  body          :text
+#  conference_id :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  organizer_id  :integer
 #
 
 class NewsArticle < ActiveRecord::Base
   ## included modules & attr_*
-  attr_accessible :body, :conference_id, :participant_id, :title
+  attr_accessible :body, :conference_id, :organizer_id, :title
 
   ## associations
-  belongs_to :participant
+  belongs_to :organizer
   belongs_to :conference
 
   ## plugins

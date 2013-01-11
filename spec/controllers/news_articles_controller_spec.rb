@@ -70,7 +70,19 @@ describe NewsArticlesController do
       post :create, { news_article: FactoryGirl.attributes_for(:news_article) }
       response.should redirect_to news_article_path(NewsArticle.last)
     end
+  end
 
+  context "when admin user is not organizer yet" do
+    let(:service_admin) { FactoryGirl.create(:admin_user, id: 12) }
+
+    before do
+      sign_in service_admin
+    end
+
+    it "should redirect main on news create attempt" do
+      get :new
+      response.should redirect_to root_url(subdomain: conference.domain)
+    end
   end
 
 end

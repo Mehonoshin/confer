@@ -1,5 +1,6 @@
 class NewsArticlesController < BaseProjectController
   load_and_authorize_resource
+  before_filter :check_if_organizer, only: [:create, :new]
 
   def index
     @news_articles = NewsArticle.where(conference_id: @conference.id)
@@ -24,7 +25,7 @@ class NewsArticlesController < BaseProjectController
 
   def create
     attrs = params[:news_article].dup
-    attrs[:participant_id] = @current_participant.id
+    attrs[:organizer_id] = @current_organizer.id
     @news_article = @conference.news_articles.create!(attrs)
     redirect_to news_article_path(@news_article), notice: t('projects.news.notices.created')
   end
