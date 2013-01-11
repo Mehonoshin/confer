@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path, alert: exception.message
     end
   end
+
+  before_filter :set_title
+
+  private
+
+    def set_title
+      @page_title = t("titles.#{params[:controller].gsub("/", ".")}.#{params[:action]}")
+    end
 end

@@ -15,6 +15,7 @@ class NewsArticlesController < BaseProjectController
 
   def show
     @news_article = @conference.news_articles.where(id: params[:id]).last
+    @page_title = @news_article.title
   end
 
   def new
