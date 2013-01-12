@@ -2,6 +2,9 @@
   %h1= t('projects.participants.index_title')
   %p= t('projects.participants.management')
 
+= render partial: "organizers"
+
+%h4= "#{t('projects.participants.participants_list')}:"
 .b-participants__nav.admin
   %ul.nav.nav-tabs
     %li.pending.active

@@ -2,6 +2,10 @@
   %h1= t('projects.participants.index_title')
   %p= t('projects.participants.index_desc')
 
+= render partial: "organizers"
+
+
+%h4= "#{t('projects.participants.participants_list')}:"
 %table.table.table-bordered.tablesorter.tablesorter-default
   %thead
     %tr
