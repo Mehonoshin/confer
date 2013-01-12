@@ -1,0 +1,6 @@
+= semantic_form_for @organizer do |f|
+  = f.inputs do
+    = f.input :email, label: t('projects.organizers.email')
+    = f.input :role, label: t('projects.organizers.role')
+  = f.actions do
+    = f.action :submit, button_html: { class: "btn btn-success" }, label: t('projects.organizers.submit')

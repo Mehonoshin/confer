@@ -11,10 +11,11 @@
   .well
     %h3
       = link_to article.title, news_article_path(article)
-    .controls
-      = link_to edit_news_article_path(article) do
-        %i.icon-edit
-      = link_to news_article_path(article), method: :delete, confirm: t('projects.news.confirms.destroy') do
-        %i.icon-remove
+    - if can? :moderate, @conference
+      .controls
+        = link_to edit_news_article_path(article) do
+          %i.icon-edit
+        = link_to news_article_path(article), method: :delete, confirm: t('projects.news.confirms.destroy') do
+          %i.icon-remove
 
     %p= simple_format article.body

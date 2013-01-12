@@ -7,4 +7,7 @@ FactoryGirl.define do
     role "owner"
     role_description "Some descr"
   end
+  factory :organizer_by_email, parent: :organizer do
+    user_id nil
+  end
 end

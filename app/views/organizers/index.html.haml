@@ -1,0 +1,19 @@
+.well
+  %h3= t('projects.organizers.index_title')
+  = button_to t('projects.organizers.add'), new_organizer_path, method: :get, class: "btn btn-primary btn-large"
+
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
+    %tr
+      %th= "ID"
+      %th= t('projects.organizers.email')
+      %th= t('projects.organizers.role')
+      %th
+  %tbody
+    - @organizers.each do |organizer|
+      %tr
+        %td= organizer.id
+        %td= organizer.user.email
+        %td= organizer.role == "owner" ? t("projects.organizers.owner") : organizer.role
+        %td
+          = button_to t('projects.organizers.remove'), organizer_path(organizer), class: "btn btn-danger btn-small", method: :delete, confirm: t('projects.organizers.confirms.remove') unless organizer.role == "owner"

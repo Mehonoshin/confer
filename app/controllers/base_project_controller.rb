@@ -7,6 +7,10 @@ class BaseProjectController < ApplicationController
 
   private
 
+    def authorize_project_management
+      authorize! :moderate, @conference
+    end
+
     def check_if_organizer
       redirect_to conference_site_url(@conference), notice: t('projects.news.notices.become_organizer') if @current_organizer.nil?
     end

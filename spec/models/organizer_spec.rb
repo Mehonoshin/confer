@@ -7,6 +7,15 @@ describe Organizer do
     it { should be_valid }
   end
 
+  context "when created by email" do
+    let(:user) { FactoryGirl.create(:user) }
+    subject { FactoryGirl.create(:organizer_by_email, email: user.email) }
+
+    it "should have user id" do
+      subject.user_id.should be_eql(user.id)
+    end
+  end
+
   context "with empty attrs" do
     subject { FactoryGirl.build(:organizer, user_id: nil, conference_id: nil, role: "") }
     before { subject.valid? }

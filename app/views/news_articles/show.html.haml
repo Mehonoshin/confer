@@ -1,9 +1,10 @@
 %h3= @news_article.title
 .well
-  .controls
-    = link_to edit_news_article_path(@news_article) do
-      %i.icon-edit
-    = link_to news_article_path(@news_article), method: :delete, confirm: t('projects.news.confirms.destroy') do
-      %i.icon-remove
+  - if can? :moderate, @conference
+    .controls
+      = link_to edit_news_article_path(@news_article) do
+        %i.icon-edit
+      = link_to news_article_path(@news_article), method: :delete, confirm: t('projects.news.confirms.destroy') do
+        %i.icon-remove
 
   %p= simple_format @news_article.body

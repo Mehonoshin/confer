@@ -13,7 +13,8 @@
 
 class Organizer < ActiveRecord::Base
   ## included modules & attr_*
-  attr_accessible :conference_id, :role, :role_description, :user_id
+  attr_accessible :conference_id, :role, :role_description, :user_id, :email
+  attr_accessor :email
 
   ## associations
   belongs_to :user
@@ -23,6 +24,7 @@ class Organizer < ActiveRecord::Base
   ## plugins
 
   ## callbacks
+  before_validation :set_user_id, on: :create
 
   ## validations
   validates :user_id, presence: true
@@ -35,4 +37,8 @@ class Organizer < ActiveRecord::Base
   public
   protected
   private
+
+    def set_user_id
+      self.user_id = User.find_by_email(email).id if email.present?
+    end
 end
