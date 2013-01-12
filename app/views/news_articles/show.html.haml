@@ -8,3 +8,4 @@
         %i.icon-remove
 
   %p= simple_format @news_article.body
+  %small.muted= "#{t('projects.news.published_by')} #{human_date(@news_article.created_at)} #{t('projects.news.by_user')} #{@news_article.organizer.full_name}"

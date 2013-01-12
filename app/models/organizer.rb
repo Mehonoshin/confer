@@ -16,6 +16,8 @@ class Organizer < ActiveRecord::Base
   attr_accessible :conference_id, :role, :role_description, :user_id, :email
   attr_accessor :email
 
+  delegate :full_name, to: :user
+
   ## associations
   belongs_to :user
   belongs_to :conference

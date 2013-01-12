@@ -19,3 +19,4 @@
           %i.icon-remove
 
     %p= simple_format article.body
+    %small.muted= "#{t('projects.news.published_by')} #{human_date(article.created_at)} #{t('projects.news.by_user')} #{article.organizer.full_name}"
