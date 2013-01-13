@@ -40,9 +40,20 @@ describe FeedbacksController do
   end
 
   context "when user is not signed in" do
+    before do
+      request.expects(:subdomain).returns(conference.domain)
+    end
+
     it "should not allow access to feedbacks admin page" do
       get :index
       response.should redirect_to new_user_session_path
+    end
+
+    it "should create feedback item" do
+      attrs = FactoryGirl.attributes_for(:feedback)
+      attrs.delete(:user_id)
+      post :create, {feedback: attrs}
+      response.should redirect_to contacts_path
     end
   end
 
