@@ -78,6 +78,8 @@ class User < ActiveRecord::Base
   has_many :organizer_roles, class_name: "Organizer", dependent: :destroy
   has_many :organized, through: :organizer_roles, source: :conference, dependent: :destroy
 
+  has_many :feedbacks
+
   ## plugins
   audited
   has_associated_audits

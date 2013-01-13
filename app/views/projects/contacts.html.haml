@@ -1,0 +1,12 @@
+.well
+  %h3= t('projects.feedbacks.contact_us')
+  %p= t('projects.feedbacks.how_to_contact')
+
+= semantic_form_for @feedback do |f|
+  = f.inputs do
+    - unless signed_in?
+      = f.input :email
+    = f.input :title, label: t('projects.feedbacks.title')
+    = f.input :body, label: t('projects.feedbacks.body')
+  = f.actions do
+    = f.action :submit, button_html: { class: "btn btn-primary" }, label: t('projects.feedbacks.submit')

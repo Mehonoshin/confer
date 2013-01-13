@@ -6,6 +6,10 @@
       %ul.dropdown-menu
         %li{ class: params[:controller] == "organizers" ? "active" : "" }
           = link_to t('projects.menu.organizers'), organizers_path
+        %li{ class: params[:controller] == "feedbacks" ? "active" : "" }
+          = link_to feedbacks_path do
+            = t('projects.menu.feedbacks')
+            = "(#{@conference.feedbacks.with_state(:unread).count})" if @conference.feedbacks.with_state(:unread).count > 0
         %li= link_to t('projects.menu.newsletters'), "#"
         %li= link_to t('projects.menu.settings'), "#"
 
@@ -17,6 +21,9 @@
 
   %li{ class: params[:controller] == "participants" ? "active" : "" }
     = link_to t('projects.menu.participants'), participants_path
+
+  %li{ class: params[:controller] == "projects" && params[:action] == "contacts" ? "active" : "" }
+    = link_to t('projects.menu.contacts'), contacts_path
 
   - if user_signed_in?
     %li{ class: params[:controller] == "users" ? "active" : "" }

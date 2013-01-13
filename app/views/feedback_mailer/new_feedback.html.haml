@@ -1,0 +1,4 @@
+= t('projects.feedbacks.greetings')
+%br
+= t('projects.feedbacks.new_feedback_recieved')
+= link_to root_url(subdomain: @conference.domain), feedbacks_path(subdomain: @conference.domain)

@@ -1,0 +1,8 @@
+= link_to t('projects.feedbacks.back'), feedbacks_path
+.well
+  .page-header
+    %h1
+      = @feedback.title
+      %small= @feedback.customer_email
+  %p= simple_format @feedback.body
+  %p= human_date_with_time(@feedback.created_at)

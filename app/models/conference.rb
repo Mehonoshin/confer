@@ -35,6 +35,8 @@ class Conference < ActiveRecord::Base
   has_many :reports, dependent: :destroy
   has_many :news_articles, dependent: :destroy
 
+  has_many :feedbacks
+
   ## plugins
   audited associated_with: :user
   mount_uploader :logo, LogoUploader
@@ -69,6 +71,10 @@ class Conference < ActiveRecord::Base
   ## class methods
 
   public
+
+  def notification_email
+    user.email
+  end
 
   def has_guest?(user)
     !participants.where(user_id: user.id).empty?

@@ -45,6 +45,10 @@ describe Conference do
       subject.organizers.last.role.should be_eql("owner")
     end
 
+    it "should return notification email" do
+      subject.notification_email.should be_eql(subject.user.email)
+    end
+
     it "should not allow incorrect domain" do
       conf = FactoryGirl.build(:conference, domain: "sad21=@@#!")
       conf.should_not be_valid

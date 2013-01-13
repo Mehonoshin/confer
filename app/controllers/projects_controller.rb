@@ -4,4 +4,8 @@ class ProjectsController < BaseProjectController
     @page_title += " #{@conference.name}"
   end
 
+  def contacts
+    @feedback = Feedback.new
+  end
+
 end

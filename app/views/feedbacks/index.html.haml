@@ -1,0 +1,25 @@
+.well
+  %h1= t('projects.feedbacks.index_title')
+  %p= t('projects.feedbacks.index_desc')
+
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
+    %tr
+      %th= "ID"
+      %th= t('projects.feedbacks.title')
+      %th= t('projects.feedbacks.email')
+      %th
+  %tbody
+    - @feedbacks.each do |feedback|
+      %tr
+        %td= feedback.id
+        %td
+          %span.label= t('projects.feedbacks.unread') if feedback.unread?
+          = link_to feedback.title, feedback_path(feedback)
+        %td
+          - if feedback.user
+            = link_to feedback.customer_email, user_path(feedback.user)
+          - else
+            = feedback.customer_email
+        %td
+          = button_to t('projects.feedbacks.remove'), feedback_path(feedback), method: :delete, class: "btn btn-danger btn-small", confirm: t('projects.feedbacks.confirms.remove')
