@@ -20,7 +20,7 @@ Confer::Application.routes.draw do
     match '/feed' => 'news_items#feed',
       as: :feed,
       defaults: { format: 'atom' }
-    get "/contacts" => "projects#contacts", as: :contacts
+    get "/contacts" => "feedbacks#new", as: :contacts
     get "/" => "projects#index"
   end
 

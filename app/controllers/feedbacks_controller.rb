@@ -10,11 +10,19 @@ class FeedbacksController < BaseProjectController
     @feedback.read! if @feedback.unread?
   end
 
+  def new
+    @feedback = Feedback.new
+  end
+
   def create
     attrs = params[:feedback]
     attrs[:user_id] = current_user.id if signed_in?
-    @feedback = @conference.feedbacks.create!(attrs)
-    redirect_to contacts_path, notice: t('projects.feedbacks.notices.created')
+    @feedback = @conference.feedbacks.create(attrs)
+    if @feedback.valid?
+      redirect_to contacts_path, notice: t('projects.feedbacks.notices.created')
+    else
+      render action: "new"
+    end
   end
 
   def destroy
