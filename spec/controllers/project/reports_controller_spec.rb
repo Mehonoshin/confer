@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ReportsController do
+describe Project::ReportsController do
   let(:user) { FactoryGirl.create(:admin_user) }
   let(:conference) { FactoryGirl.create(:conference) }
   let(:participant) { FactoryGirl.create(:participant, user_id: user.id) }

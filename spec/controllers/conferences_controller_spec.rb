@@ -49,6 +49,7 @@ describe ConferencesController do
       post :create, conference: FactoryGirl.attributes_for(:conference)
       response.should redirect_to conferences_path
     end
+
   end
 
 end

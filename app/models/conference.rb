@@ -16,13 +16,19 @@
 #  logo              :string(255)
 #  theme             :string(255)
 #  user_id           :integer
+#  notify_email      :string(255)
+#  address           :string(255)
+#  phone             :string(255)
+#  public_email      :string(255)
+#  additional_info   :text
+#  modules           :text
 #
 
 class Conference < ActiveRecord::Base
   THEMES = ["amelia.min", "cerulean.min", "cosmo.min", "cyborg.min", "journal.min", "readable.min", "salate.min", "simplex.min", "spruce.min", "superhero.min", "united.min"]
 
   ## included modules & attr_*
-  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo, :theme
+  attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo, :theme, :notify_email, :address, :phone, :public_email, :additional_info, :modules
 
   ## associations
   belongs_to :user
@@ -59,6 +65,8 @@ class Conference < ActiveRecord::Base
   validates :end_date, presence: true
   validates :user_id, presence: true
   validates :domain, presence: true, uniqueness: true, format: { with: /^[a-zA-Z0-9-]*$/ }
+  validates :notify_email, format: { with: /\A([^@\s]+)@((?:[-a-z1-9]+\.)+[a-z]{2,})\Z/i }, allow_blank: true
+  validates :public_email, format: { with: /\A([^@\s]+)@((?:[-a-z1-9]+\.)+[a-z]{2,})\Z/i }, allow_blank: true
   validate :end_date_greater_than_start_date
   validate :registration_date_less_than_end_date
 
@@ -73,7 +81,7 @@ class Conference < ActiveRecord::Base
   public
 
   def notification_email
-    user.email
+    notify_email.present? ? notify_email : user.email
   end
 
   def has_guest?(user)

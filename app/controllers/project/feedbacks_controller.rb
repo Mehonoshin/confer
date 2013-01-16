@@ -1,4 +1,4 @@
-class FeedbacksController < BaseProjectController
+class Project::FeedbacksController < Project::BaseProjectController
   before_filter :authorize_project_management, except: [:create]
 
   def index

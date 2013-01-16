@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FeedbacksController do
+describe Project::FeedbacksController do
   let(:user) { FactoryGirl.create(:user) }
   let(:conference) { FactoryGirl.create(:conference, user_id: user.id) }
   let(:feedback) { FactoryGirl.create(:feedback, conference_id: conference.id) }

@@ -49,6 +49,11 @@ describe Conference do
       subject.notification_email.should be_eql(subject.user.email)
     end
 
+    it "should return notify email when present" do
+      conf = FactoryGirl.create(:conference, notify_email: "admin@service.com")
+      conf.notification_email.should be_eql(conf.notify_email)
+    end
+
     it "should not allow incorrect domain" do
       conf = FactoryGirl.build(:conference, domain: "sad21=@@#!")
       conf.should_not be_valid
@@ -80,6 +85,13 @@ describe Conference do
     it "should force domain name to downcase" do
       conf = FactoryGirl.create(:conference, domain: "WA2013")
       conf.domain.should be_eql("wa2013")
+    end
+
+    it "should validate notify email and public email format" do
+      conf = FactoryGirl.build(:conference, notify_email: "invalid@@$asd", public_email: "invalid_email")
+      conf.valid?
+      conf.errors[:notify_email].should_not be_empty
+      conf.errors[:public_email].should_not be_empty
     end
   end
 

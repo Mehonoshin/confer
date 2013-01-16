@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NewsArticlesController do
+describe Project::NewsArticlesController do
   let(:conference) { FactoryGirl.create(:conference) }
   subject { FactoryGirl.create(:news_article) }
 

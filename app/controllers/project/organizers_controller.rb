@@ -1,4 +1,4 @@
-class OrganizersController < BaseProjectController
+class Project::OrganizersController < Project::BaseProjectController
   before_filter :authorize_project_management
 
   def index

@@ -25,4 +25,5 @@ class ConferencesController < ApplicationController
       render :new
     end
   end
+
 end

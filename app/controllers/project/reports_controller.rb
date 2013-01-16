@@ -1,4 +1,4 @@
-class ReportsController < BaseProjectController
+class Project::ReportsController < Project::BaseProjectController
   load_and_authorize_resource
 
   def index

@@ -4,24 +4,30 @@ Confer::Application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   constraints(Multidomain) do
-    resources :participants do
-      member do
-        put :approve
+    scope module: "project" do
+      resources :participants do
+        member do
+          put :approve
+        end
       end
-    end
-    resources :reports do
-      member do
-        put :approve
+      resources :reports do
+        member do
+          put :approve
+        end
       end
+      resources :news_articles, path: "news"
+      resources :organizers, only: [:index, :new, :destroy, :create]
+      resources :feedbacks, only: [:index, :show, :destroy, :create]
+      match '/feed' => 'news_items#feed',
+        as: :feed,
+        defaults: { format: 'atom' }
+
+      resources :conferences, only: [:edit, :update]
+      get "/settings" => "conferences#edit", as: :settings
+
+      get "/contacts" => "feedbacks#new", as: :contacts
+      get "/" => "projects#index"
     end
-    resources :news_articles, path: "news"
-    resources :organizers, only: [:index, :new, :destroy, :create]
-    resources :feedbacks, only: [:index, :show, :destroy, :create]
-    match '/feed' => 'news_items#feed',
-      as: :feed,
-      defaults: { format: 'atom' }
-    get "/contacts" => "feedbacks#new", as: :contacts
-    get "/" => "projects#index"
   end
 
   namespace :admin do

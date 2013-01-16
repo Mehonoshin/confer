@@ -20,7 +20,7 @@ class Ability
       can :create, Report
 
       # Organizers features
-      can :moderate, Conference do |conference|
+      can [:moderate, :edit, :update], Conference do |conference|
         conference.stuff.include?(user)
       end
     end

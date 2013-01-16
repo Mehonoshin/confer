@@ -1,4 +1,4 @@
-class NewsArticlesController < BaseProjectController
+class Project::NewsArticlesController < Project::BaseProjectController
   load_and_authorize_resource
   before_filter :check_if_organizer, only: [:create, :new]
 

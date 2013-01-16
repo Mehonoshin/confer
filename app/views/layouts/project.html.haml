@@ -31,5 +31,5 @@
           %footer
             %h6
               = t("projects.copyright")
-              = link_to service_url, url_for(host: service_url, controller: "main", action: "index")
+              = link_to service_url, root_url(host: request.domain)
 

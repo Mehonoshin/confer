@@ -11,7 +11,7 @@
             = t('projects.menu.feedbacks')
             = "(#{@conference.feedbacks.with_state(:unread).count})" if @conference.feedbacks.with_state(:unread).count > 0
         %li= link_to t('projects.menu.newsletters'), "#"
-        %li= link_to t('projects.menu.settings'), "#"
+        %li= link_to t('projects.menu.settings'), settings_path
 
   %li{ class: params[:controller] == "news_articles" ? "active" : "" }
     = link_to t('projects.menu.news'), news_articles_path

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ProjectsController do
+describe Project::ProjectsController do
   let(:conference) { FactoryGirl.create(:conference) }
 
   before do

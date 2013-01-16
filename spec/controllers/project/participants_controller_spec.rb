@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ParticipantsController do
+describe Project::ParticipantsController do
   subject { FactoryGirl.create(:participant) }
   let(:user) { FactoryGirl.create(:user) }
   let(:conference) { FactoryGirl.create(:conference, user_id: user.id) }
