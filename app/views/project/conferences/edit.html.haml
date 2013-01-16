@@ -9,12 +9,12 @@
       = f.input :registrable_until, as: :string, input_html: { class: "datepicker" }, label: t('conference.form.registrable_until')
       = f.input :max_guests, label: t('conference.form.max_guests')
       = f.input :description, label: t('conference.form.description')
-      = f.input :theme
-      = f.input :notify_email
-      = f.input :address
-      = f.input :phone
-      = f.input :public_email
-      = f.input :additional_info
+      = f.input :theme, label: t('conference.form.theme'), as: :select, collection: Conference::THEMES.map { |theme| theme.split(".")[0] }
+      = f.input :notify_email, label: t('conference.form.notify_email')
+      = f.input :address, label: t('conference.form.address')
+      = f.input :phone, label: t('conference.form.phone')
+      = f.input :public_email, label: t('conference.form.public_email')
+      = f.input :additional_info, label: t('conference.form.additional_info')
     = f.actions do
       = f.action :submit, button_html: { class: "btn btn-success" }, label: t('conference.form.submit')
 

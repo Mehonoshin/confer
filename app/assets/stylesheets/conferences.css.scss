@@ -14,12 +14,20 @@ form.conference {
     margin-right: 10px;
   }
 
+  textarea {
+    width: 400px;
+    height: 200px;
+  }
+
+
   textarea#conference_description {
     width: 400px;
     height: 100px;
   }
 
   input {
+    width: 300px;
+
     &#conference_name {
       width: 400px;
     }

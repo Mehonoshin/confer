@@ -210,6 +210,11 @@ ru:
       max_guests: "Максимальное количество участников"
       submit: "Применить"
       description: "Описание"
+      notify_email: "Email для уведомлений о заявках"
+      address: "Адрес"
+      phone: "Телефон"
+      public_email: "Email организаторов"
+      additional_info: "Дополнительная информация"
       hints:
         domain: "вам будет выдан домен 2 уровня, вида my-event.vsuconf.ru"
     nav:

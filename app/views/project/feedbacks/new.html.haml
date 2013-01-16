@@ -1,6 +1,14 @@
 .well
   %h3= t('projects.feedbacks.contact_us')
   %p= t('projects.feedbacks.how_to_contact')
+%address
+  %strong= @conference.address
+  %br
+  = @conference.phone
+  %br
+  = @conference.public_email
+  %br
+  = @conference.additional_info
 
 = semantic_form_for @feedback do |f|
   = f.inputs do
