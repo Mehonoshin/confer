@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'capybara_helper'
 
 feature "participanse in conferences" do
   let(:user) { FactoryGirl.create(:user) }

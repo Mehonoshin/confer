@@ -1,3 +1,4 @@
+%h3= t('projects.conferences.settings')
 .well
   = semantic_form_for @conference do |f|
     = f.inputs do
@@ -15,6 +16,11 @@
       = f.input :phone, label: t('conference.form.phone')
       = f.input :public_email, label: t('conference.form.public_email')
       = f.input :additional_info, label: t('conference.form.additional_info')
+      %h4= t('projects.conferences.modules_title')
+      - Conference::MODULES.each do |site_module|
+        = label_tag do
+          = check_box_tag "conference[modules][]", site_module, @conference.modules.include?(site_module), id: "checkbox_#{site_module}"
+          = t("projects.conferences.modules.#{site_module}")
     = f.actions do
       = f.action :submit, button_html: { class: "btn btn-success" }, label: t('conference.form.submit')
 

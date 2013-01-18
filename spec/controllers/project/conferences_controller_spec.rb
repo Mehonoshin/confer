@@ -5,6 +5,17 @@ describe Project::ConferencesController do
   let(:owner) { FactoryGirl.create(:user) }
   subject { FactoryGirl.create(:conference, user_id: owner.id) }
 
+  context "when guest" do
+    before do
+      request.expects(:subdomain).returns(subject.domain)
+    end
+
+    it "should not allow to access settings page" do
+      get :edit
+      response.should redirect_to new_user_session_path
+    end
+  end
+
   context "when editing on conference site" do
     before(:each) do
       request.expects(:subdomain).returns(subject.domain)

@@ -13,19 +13,23 @@
         %li= link_to t('projects.menu.newsletters'), "#"
         %li= link_to t('projects.menu.settings'), settings_path
 
-  %li{ class: params[:controller] == "news_articles" ? "active" : "" }
-    = link_to t('projects.menu.news'), news_articles_path
+  - if @conference.module_enabled?("news")
+    %li{ class: params[:controller] == "news_articles" ? "active" : "" }
+      = link_to t('projects.menu.news'), news_articles_path
 
-  %li{ class: params[:controller] == "reports" ? "active" : "" }
-    = link_to t('projects.menu.topics'), reports_path
+  - if @conference.module_enabled?("reports")
+    %li{ class: params[:controller] == "reports" ? "active" : "" }
+      = link_to t('projects.menu.topics'), reports_path
 
-  %li{ class: params[:controller] == "participants" ? "active" : "" }
-    = link_to t('projects.menu.participants'), participants_path
+  - if @conference.module_enabled?("participants")
+    %li{ class: params[:controller] == "participants" ? "active" : "" }
+      = link_to t('projects.menu.participants'), participants_path
 
-  %li{ class: params[:controller] == "projects" && params[:action] == "contacts" ? "active" : "" }
-    = link_to t('projects.menu.contacts'), contacts_path
+  - if @conference.module_enabled?("contacts")
+    %li{ class: params[:controller] == "projects" && params[:action] == "contacts" ? "active" : "" }
+      = link_to t('projects.menu.contacts'), contacts_path
 
-  - if user_signed_in?
+  - if user_signed_in? && @conference.module_enabled?("personal_page")
     %li{ class: params[:controller] == "users" ? "active" : "" }
       = link_to(t('menu.account'), edit_user_registration_path)
 

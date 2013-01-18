@@ -64,6 +64,11 @@ describe Conference do
       conf.should be_valid
     end
 
+    it "should allow to check enabled site modules" do
+      subject.module_enabled?("news").should be_true
+      subject.module_enabled?("personal_page").should be_false
+    end
+
     it "should require unique domain" do
       existing_domain = subject.domain
       new_conf = FactoryGirl.build(:conference, domain: existing_domain)

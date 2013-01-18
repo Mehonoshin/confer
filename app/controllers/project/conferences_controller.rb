@@ -1,4 +1,5 @@
 class Project::ConferencesController < Project::BaseProjectController
+  before_filter :authorize_project_management
 
   def edit
   end

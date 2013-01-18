@@ -4,7 +4,7 @@ feature "subdomains" do
   subject { FactoryGirl.create(:conference) }
 
   scenario "should open conference website" do
-    visit("http://#{subject.domain}.confer.dev:8097")
+    visit(project_url(subject.domain))
     page.should have_content(subject.domain)
   end
 

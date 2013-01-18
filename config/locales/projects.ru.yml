@@ -106,5 +106,13 @@ ru:
         removed: "Сообщение успешно удалено"
         created: "Ваше сообщение отправлено организаторам"
     conferences:
+      settings: "Настройки сайта конференции"
       notices:
         updated: "Настройки конференции изменены"
+      modules_title: "Включить/выключить модули сайта"
+      modules:
+        news: "Новости"
+        reports: "Доклады"
+        participants: "Участники"
+        contacts: "Контакты"
+        personal_page: "Личный кабинет"

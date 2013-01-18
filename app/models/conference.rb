@@ -26,9 +26,11 @@
 
 class Conference < ActiveRecord::Base
   THEMES = ["amelia.min", "cerulean.min", "cosmo.min", "cyborg.min", "journal.min", "readable.min", "salate.min", "simplex.min", "spruce.min", "superhero.min", "united.min"]
+  MODULES = ["news", "reports", "participants", "contacts", "personal_page"]
 
   ## included modules & attr_*
   attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo, :theme, :notify_email, :address, :phone, :public_email, :additional_info, :modules
+  serialize :modules, Array
 
   ## associations
   belongs_to :user
@@ -79,6 +81,10 @@ class Conference < ActiveRecord::Base
   ## class methods
 
   public
+
+  def module_enabled?(site_module)
+    modules.include?(site_module)
+  end
 
   def notification_email
     notify_email.present? ? notify_email : user.email

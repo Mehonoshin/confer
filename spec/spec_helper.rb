@@ -14,6 +14,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 Capybara.javascript_driver = :poltergeist
 Capybara.app_host = 'http://confer.dev'
+Capybara.server_port = 8097
 
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = true
@@ -22,6 +23,7 @@ VCR.configure do |c|
 end
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

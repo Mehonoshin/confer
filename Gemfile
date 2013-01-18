@@ -34,6 +34,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 group :development do
+  gem "letter_opener"
   gem 'meta_request', '0.2.0'
   gem 'pry-rails'
   gem 'ultimate-log-silencer'
@@ -55,7 +56,6 @@ group :test, :development do
   gem "vcr"
   gem "fakeweb"
   gem "timecop"
-  gem "letter_opener"
   gem 'guard'
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
