@@ -25,6 +25,7 @@ class Participant < ActiveRecord::Base
     event :approve do
       transition :new => :approved
     end
+    after_transition :new => :approved, :do => :notify_user
   end
 
   ## callbacks
@@ -40,4 +41,8 @@ class Participant < ActiveRecord::Base
   public
   protected
   private
+
+    def notify_user
+      ConferenceMailer.participation_approved(conference, user).deliver
+    end
 end

@@ -1,0 +1,10 @@
+= "#{t('conference.mailer.hello')}, #{@user.email}!"
+%br
+
+= "#{t('conference.mailer.participation_approved.your_report_is_approved')}"
+%br
+= "#{t('conference.mailer.participation_approved.it_is_displayed')}"
+= link_to participants_url(subdomain: @conference.domain), participants_url(subdomain: @conference.domain)
+
+%br
+= t('conference.mailer.service_administration')

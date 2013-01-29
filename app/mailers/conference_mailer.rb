@@ -6,4 +6,9 @@ class ConferenceMailer < ActionMailer::Base
     mail(to: creator.user.email, subject: t("conference.mailer.conference_approved.subject"))
   end
 
+  def participation_approved(conference, user)
+    @conference, @user = conference, user
+    mail(to: user.email, subject: t('conference.mailer.participation_approved.subject'))
+  end
+
 end
