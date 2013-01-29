@@ -16,6 +16,11 @@ Confer::Application.routes.draw do
         end
       end
       resources :news_articles, path: "news"
+      resources :materials, only: [:index, :new, :create, :destroy] do
+        member do
+          put :approve
+        end
+      end
       resources :organizers, only: [:index, :new, :destroy, :create]
       resources :feedbacks, only: [:index, :show, :destroy, :create]
       match '/feed' => 'news_items#feed',

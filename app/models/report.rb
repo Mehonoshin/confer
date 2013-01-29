@@ -20,6 +20,8 @@ class Report < ActiveRecord::Base
   belongs_to :participant
   belongs_to :conference
 
+  has_many :materials, dependent: :destroy
+
   ## plugins
   state_machine :initial => :pending do
     event :approve do

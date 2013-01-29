@@ -1,0 +1,8 @@
+= semantic_form_for @material do |f|
+  = f.inputs do
+    = f.input :name, label: t('projects.materials.name')
+    = f.input :file, label: t('projects.materials.file')
+    - unless @reports.empty?
+      = f.input :report_id, as: :select, collection: @reports.map { |r| [r.title, r.id] }, label: t('projects.materials.report_id')
+  = f.actions do
+    = f.action :submit, label: t('projects.materials.upload'), button_html: { class: "btn btn-success" }

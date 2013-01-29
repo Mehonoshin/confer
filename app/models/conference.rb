@@ -26,7 +26,7 @@
 
 class Conference < ActiveRecord::Base
   THEMES = ["amelia.min", "cerulean.min", "cosmo.min", "cyborg.min", "journal.min", "readable.min", "salate.min", "simplex.min", "spruce.min", "superhero.min", "united.min"]
-  MODULES = ["news", "reports", "participants", "contacts", "personal_page"]
+  MODULES = ["news", "reports", "participants", "contacts", "personal_page", "materials"]
 
   ## included modules & attr_*
   attr_accessible :end_date, :max_guests, :name, :start_date, :user_id, :domain, :registrable_until, :description, :logo, :theme, :notify_email, :address, :phone, :public_email, :additional_info, :modules
@@ -41,6 +41,7 @@ class Conference < ActiveRecord::Base
   has_many :stuff, through: :organizers, source: :user
 
   has_many :reports, dependent: :destroy
+  has_many :materials, dependent: :destroy
   has_many :news_articles, dependent: :destroy
 
   has_many :feedbacks
@@ -92,6 +93,10 @@ class Conference < ActiveRecord::Base
 
   def has_guest?(user)
     !participants.where(user_id: user.id).empty?
+  end
+
+  def has_organizer?(user)
+    !organizers.where(user_id: user.id).empty?
   end
 
   def registration_open?

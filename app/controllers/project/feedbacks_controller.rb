@@ -1,5 +1,5 @@
 class Project::FeedbacksController < Project::BaseProjectController
-  before_filter :authorize_project_management, except: [:create]
+  before_filter :authorize_project_management, except: [ :create, :new ]
 
   def index
     @feedbacks = @conference.feedbacks.order("id DESC")

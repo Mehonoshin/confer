@@ -2,12 +2,19 @@ require 'spec_helper'
 
 describe Participant do
   context "regular paticipant" do
-    subject { FactoryGirl.create(:participant) }
+    let(:user) { create(:user) }
+    subject { FactoryGirl.create(:participant, user_id: user.id) }
 
     it { should be_valid }
 
     it "should have no reports" do
       subject.reports.should be_empty
+    end
+
+    it "should notify user when his participation is approved" do
+      subject.approve!
+      subject.approved?.should be_true
+      ActionMailer::Base.deliveries.should_not be_empty
     end
   end
 

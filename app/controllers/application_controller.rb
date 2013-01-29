@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+    def current_ability
+      @current_ability ||= Ability.new(current_user, @conference)
+    end
+
     def set_title
       @page_title = t("titles.#{params[:controller].gsub("/", ".")}.#{params[:action]}")
     end

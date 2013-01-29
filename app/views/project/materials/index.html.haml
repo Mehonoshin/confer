@@ -1,0 +1,9 @@
+.well
+  %h2= t('projects.materials.index_title')
+  - if can? :create, Material
+    = button_to t('projects.materials.upload'), new_material_path, class: "btn btn-primary btn-large", method: :get
+
+%ul
+  - @materials.each do |material|
+    - if material.approved? || (material.pending? && can?(:approve, material))
+      %li= link_to material.name, material.file.url

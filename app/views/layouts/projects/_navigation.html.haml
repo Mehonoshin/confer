@@ -25,6 +25,10 @@
     %li{ class: params[:controller] == "participants" ? "active" : "" }
       = link_to t('projects.menu.participants'), participants_path
 
+  - if @conference.module_enabled?("materials")
+    %li{ class: params[:controller] == "materials" ? "active" : "" }
+      = link_to t('projects.menu.materials'), materials_path
+
   - if @conference.module_enabled?("contacts")
     %li{ class: params[:controller] == "projects" && params[:action] == "contacts" ? "active" : "" }
       = link_to t('projects.menu.contacts'), contacts_path
