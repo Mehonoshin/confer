@@ -3,7 +3,21 @@
   - if can? :create, Material
     = button_to t('projects.materials.upload'), new_material_path, class: "btn btn-primary btn-large", method: :get
 
-%ul
-  - @materials.each do |material|
-    - if material.approved? || (material.pending? && can?(:approve, material))
-      %li= link_to material.name, material.file.url
+
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %tbody
+    - @materials.each do |material|
+      %tr
+        - if material.approved? || (material.pending? && can?(:approve, material))
+          %td
+            %span.label.label-info= t('projects.materials.unapproved') if material.pending?
+            = link_to material.name, material.file.url
+          - if can? :manage, material
+            %td
+              - unless material.approved?
+                = link_to approve_material_path(material), method: :put, confirm: t("projects.materials.confirms.approve") do
+                  %i.icon-ok
+              = link_to material_path(material), method: :delete, confirm: t("projects.materials.confirms.remove") do
+                %i.icon-remove
+
+
