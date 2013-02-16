@@ -1,0 +1,27 @@
+.well
+  %h2= t('projects.pages.index_title')
+  = button_to t('projects.pages.add'), new_page_path, class: "btn btn-primary btn-large", method: :get
+
+%table.table.table-bordered.tablesorter.tablesorter-default
+  %thead
+    %tr
+      %th= "ID"
+      %th= t('projects.pages.title')
+      %th= t('projects.pages.body')
+      %th= t('projects.pages.permalink')
+      %th
+  %tbody
+    - @pages.each do |page|
+      %tr
+        %td= page.id
+        %td= link_to page.title, public_page_path(page)
+        %td= page.body
+        %td= page.permalink
+        %td
+          = link_to edit_page_path(page), method: :get do
+            %i.icon-edit
+          = link_to page_path(page), method: :delete, confirm: t("projects.pages.confirms.remove") do
+            %i.icon-remove
+
+
+

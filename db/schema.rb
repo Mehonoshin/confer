@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127151414) do
+ActiveRecord::Schema.define(:version => 20130130115214) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(:version => 20130127151414) do
     t.string   "role_description"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "permalink"
+    t.integer  "conference_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "participants", :force => true do |t|

@@ -1,0 +1,5 @@
+@import "shared/forms";
+
+form.page {
+  @include custom-form;
+}

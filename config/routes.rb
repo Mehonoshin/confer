@@ -15,23 +15,28 @@ Confer::Application.routes.draw do
           put :approve
         end
       end
-      resources :news_articles, path: "news"
       resources :materials, only: [:index, :new, :create, :destroy] do
         member do
           put :approve
         end
       end
+
       resources :organizers, only: [:index, :new, :destroy, :create]
       resources :feedbacks, only: [:index, :show, :destroy, :create]
+
+      resources :news_articles, path: "news"
       match '/feed' => 'news_items#feed',
         as: :feed,
         defaults: { format: 'atom' }
 
       resources :conferences, only: [:edit, :update]
-      get "/settings" => "conferences#edit", as: :settings
+      resources :pages, except: [:show]
 
+      get "/settings" => "conferences#edit", as: :settings
       get "/contacts" => "feedbacks#new", as: :contacts
+
       get "/" => "projects#index"
+      get "/:id" => "pages#show", as: :public_page
     end
   end
 

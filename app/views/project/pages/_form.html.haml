@@ -1,0 +1,8 @@
+.well
+  = semantic_form_for @page do |f|
+    = f.inputs do
+      = f.input :title, label: t('projects.pages.title')
+      = f.input :permalink, label: t('projects.pages.permalink')
+      = f.input :body, label: t('projects.pages.body')
+    = f.actions do
+      = f.action :submit, button_html: { class: "btn btn-success" }, label: t('projects.pages.submit')

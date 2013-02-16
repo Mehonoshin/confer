@@ -45,6 +45,7 @@ class Conference < ActiveRecord::Base
   has_many :news_articles, dependent: :destroy
 
   has_many :feedbacks
+  has_many :pages
 
   ## plugins
   audited associated_with: :user

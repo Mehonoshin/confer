@@ -10,6 +10,7 @@ class Ability
     can :read, Report
     can :read, NewsArticle
     can :read, Material
+    can :read, Page
     can :create, Feedback
 
     if user.admin?
@@ -31,6 +32,7 @@ class Ability
         end
         # organizer
         if current_conference.has_organizer?(user)
+          can :manage, Page
           can :manage, Material
           can :manage, Material
           can :moderate, Conference
