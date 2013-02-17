@@ -2,13 +2,14 @@
 #
 # Table name: pages
 #
-#  id            :integer          not null, primary key
-#  title         :string(255)
-#  body          :text
-#  permalink     :string(255)
-#  conference_id :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id              :integer          not null, primary key
+#  title           :string(255)
+#  body            :text
+#  permalink       :string(255)
+#  conference_id   :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  display_in_menu :boolean          default(FALSE)
 #
 
 class Page < ActiveRecord::Base

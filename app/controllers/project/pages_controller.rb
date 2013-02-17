@@ -1,6 +1,6 @@
 class Project::PagesController < Project::BaseProjectController
   #load_and_authorize_resource
-  before_filter :verify_access, except: [:index]
+  before_filter :verify_access, except: [:show]
 
   def index
     @pages = @conference.pages
