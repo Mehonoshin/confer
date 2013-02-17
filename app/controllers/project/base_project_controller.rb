@@ -3,6 +3,7 @@ class Project::BaseProjectController < ApplicationController
 
   before_filter :preload_project
   before_filter :preload_participant, :preload_organizer
+  before_filter :load_menu_pages
   helper_method :conference_site_url, :service_url
 
   private
@@ -33,6 +34,10 @@ class Project::BaseProjectController < ApplicationController
 
     def preload_organizer
       @current_organizer = @conference.organizers.where(user_id: current_user.id).last if signed_in?
+    end
+
+    def load_menu_pages
+      @menu_pages = @conference.pages.in_menu
     end
 
 end

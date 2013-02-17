@@ -8,6 +8,9 @@ describe Page do
     subject { build(:page, conference_id: conference.id) }
     let(:another_conference) { create(:conference) }
 
+    it { should_not allow_value("me.com.ru").for(:permalink) }
+    it { should allow_value("me-com").for(:permalink) }
+
     context "when conference has a page with the same permalink" do
       before { create(:page, conference_id: conference.id) }
 
@@ -25,6 +28,7 @@ describe Page do
 
       it { should_not be_valid }
     end
+
   end
 
   it "to_param should return permalink" do

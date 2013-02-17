@@ -2,4 +2,13 @@
 
 form.page {
   @include custom-form;
+
+  #page_display_in_menu_input{
+    #page_display_in_menu {
+      width: 20px;
+    }
+    label.control-label {
+      display: none;
+    }
+  }
 }

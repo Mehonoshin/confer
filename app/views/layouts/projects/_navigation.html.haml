@@ -4,9 +4,9 @@
     %li{ class: ["organizers"].include?(params[:controller]) ? "active" : "" }
       = link_to t('projects.menu.admin'), "#", class: "dropdown-toggle", data: { toggle: "dropdown" }
       %ul.dropdown-menu
-        %li{ class: params[:controller] == "organizers" ? "active" : "" }
+        %li{ class: params[:controller] == "project/organizers" ? "active" : "" }
           = link_to t('projects.menu.organizers'), organizers_path
-        %li{ class: params[:controller] == "feedbacks" ? "active" : "" }
+        %li{ class: params[:controller] == "project/feedbacks" ? "active" : "" }
           = link_to feedbacks_path do
             = t('projects.menu.feedbacks')
             = "(#{@conference.feedbacks.with_state(:unread).count})" if @conference.feedbacks.with_state(:unread).count > 0
@@ -15,23 +15,27 @@
         %li= link_to t('projects.menu.settings'), settings_path
 
   - if @conference.module_enabled?("news")
-    %li{ class: params[:controller] == "news_articles" ? "active" : "" }
+    %li{ class: params[:controller] == "project/news_articles" ? "active" : "" }
       = link_to t('projects.menu.news'), news_articles_path
 
   - if @conference.module_enabled?("reports")
-    %li{ class: params[:controller] == "reports" ? "active" : "" }
+    %li{ class: params[:controller] == "project/reports" ? "active" : "" }
       = link_to t('projects.menu.topics'), reports_path
 
   - if @conference.module_enabled?("participants")
-    %li{ class: params[:controller] == "participants" ? "active" : "" }
+    %li{ class: params[:controller] == "project/participants" ? "active" : "" }
       = link_to t('projects.menu.participants'), participants_path
 
   - if @conference.module_enabled?("materials")
-    %li{ class: params[:controller] == "materials" ? "active" : "" }
+    %li{ class: params[:controller] == "project/materials" ? "active" : "" }
       = link_to t('projects.menu.materials'), materials_path
 
+  - @menu_pages.each do |page|
+    %li{ class: params[:controller] == "project/pages" && params[:id] == page.permalink ? "active" : "" }
+      = link_to page.title, public_page_path(page)
+
   - if @conference.module_enabled?("contacts")
-    %li{ class: params[:controller] == "projects" && params[:action] == "contacts" ? "active" : "" }
+    %li{ class: params[:controller] == "project/feedbacks" && params[:action] == "new" ? "active" : "" }
       = link_to t('projects.menu.contacts'), contacts_path
 
   - if user_signed_in? && @conference.module_enabled?("personal_page")

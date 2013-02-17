@@ -143,6 +143,7 @@ ru:
       title: "Заголовок"
       body: "Текст"
       permalink: "Пермалинк"
+      display_in_menu: "Отображать в меню"
       submit: "Применить"
       notices:
         created: "Страница успешно создана"

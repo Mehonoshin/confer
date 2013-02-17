@@ -14,7 +14,7 @@
 
 class Page < ActiveRecord::Base
   ## included modules & attr_*
-  attr_accessible :body, :conference_id, :permalink, :title
+  attr_accessible :body, :conference_id, :permalink, :title, :display_in_menu
 
   ## associations
   belongs_to :conference
@@ -25,9 +25,10 @@ class Page < ActiveRecord::Base
 
   ## validations
   validates :body, presence: true
-  validates :permalink, presence: true, uniqueness: { scope: :conference_id }
+  validates :permalink, presence: true, uniqueness: { scope: :conference_id }, format: { with: /^[a-zA-Z0-9-]*$/ }
 
   ## named_scopes
+  scope :in_menu, where(display_in_menu: true)
 
   ## class methods
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130115214) do
+ActiveRecord::Schema.define(:version => 20130217094156) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -101,8 +101,9 @@ ActiveRecord::Schema.define(:version => 20130130115214) do
     t.text     "body"
     t.string   "permalink"
     t.integer  "conference_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "display_in_menu", :default => false
   end
 
   create_table "participants", :force => true do |t|
