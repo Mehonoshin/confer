@@ -23,6 +23,7 @@ class Material < ActiveRecord::Base
   belongs_to :user
 
   ## plugins
+  audited
   mount_uploader :file, MaterialUploader
 
   state_machine :initial => :pending do

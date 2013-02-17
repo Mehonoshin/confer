@@ -20,6 +20,7 @@ class Page < ActiveRecord::Base
   belongs_to :conference
 
   ## plugins
+  audited
 
   ## callbacks
 

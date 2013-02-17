@@ -21,6 +21,8 @@ class Participant < ActiveRecord::Base
   accepts_nested_attributes_for :reports, :reject_if => proc { |attributes| attributes['description'].blank? || attributes["title"].blank? }
 
   ## plugins
+  audited
+
   state_machine :initial => :new do
     event :approve do
       transition :new => :approved

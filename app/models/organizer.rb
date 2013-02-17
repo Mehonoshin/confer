@@ -24,6 +24,7 @@ class Organizer < ActiveRecord::Base
   has_many :news_articles, dependent: :destroy
 
   ## plugins
+  audited
 
   ## callbacks
   before_validation :set_user_id, on: :create

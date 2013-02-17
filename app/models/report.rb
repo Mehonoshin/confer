@@ -23,6 +23,8 @@ class Report < ActiveRecord::Base
   has_many :materials, dependent: :destroy
 
   ## plugins
+  audited
+
   state_machine :initial => :pending do
     event :approve do
       transition :pending => :approved
